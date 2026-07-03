@@ -1,0 +1,30 @@
+parameter,value,scope,notes
+chromatic_classes,7,dataset,Seven target labels are red|orange|yellow|green|cyan|blue|purple.
+preprocessing_bandpass_hz,2.5-100,preprocessing,Zero-phase FIR band-pass filtering before epoch construction.
+preprocessing_notch_hz,50,preprocessing,Line-noise notch frequency used before epoch construction.
+sampling_rate_hz,1000,preprocessing,Native EEG sampling rate retained for the reported experiments.
+preprocessing_reference,average_reference,preprocessing,Average reference used before model-side residual CAR correction.
+pre_epoch_detrend_degree,2,preprocessing,Polynomial detrending applied before epoching.
+ica_method,Picard_random_state_97_max_iter_1000,preprocessing,ICA setting used in the preprocessing route.
+epoch_rejection_policy,no_automatic_amplitude_rejection,preprocessing,Epochs were constructed without amplitude-threshold rejection.
+reported_channel_set,O1|O2|T5|T6|P3|P4,preprocessing,Posterior six-channel set used by the reported model; all-16-channel rerun is summarized separately.
+epoch_window_samples,220:600,preprocessing,Post-stimulus analysis window used for the reported experiments.
+fixed_split_seeds,1;7;21;42;97,evaluation,Five model seeds used for fixed-split and Sub2 panel summaries.
+color_contrastive_weight,0.02,training,Weight for same-label supervised contrastive regularization.
+hsv_prototype_logit_scale,0.005,structured_head,Scale for HSV prototype logits.
+class_query_logit_scale,0.01,structured_head,Scale for adjacent class-query residual logits.
+class_query_gate_bias,-2.5,structured_head,Gate bias for adjacent class-query residual logits.
+feature_state_logit_scale,0.05,model_head,Scale for the feature-state tuning logits.
+ema_decay,0.99,stabilization,Exponential moving average decay used in the reported configuration.
+checkpoint_average_top_k,5,stabilization,Number of validation-selected checkpoints averaged for reported predictions.
+optimizer,AdamW,training,Optimizer used for the reported model and the stabilized DeepConvNet control.
+learning_rate,0.0003,training,Initial learning rate used by the reported fixed-split runs.
+weight_decay,0.001,training,Weight decay used by the reported fixed-split runs.
+batch_size,32,training,Mini-batch size used by the reported fixed-split runs.
+max_epochs,150,training,Maximum supervised training epochs before early stopping.
+early_stopping_patience,25,training,Validation-patience setting used for supervised training.
+lr_scheduler,ReduceLROnPlateau,training,Validation-loss scheduler with factor 0.5 and patience 4.
+base_channels,16,architecture,Base channel width used by the reported model.
+feature_dim,64,architecture,Fused representation dimension used by the reported model.
+transformer_layers,1,architecture,Number of transformer layers used in the hybrid branch.
+aux_feature_dim,42,architecture,Covariance/log-Euclidean auxiliary feature dimension.

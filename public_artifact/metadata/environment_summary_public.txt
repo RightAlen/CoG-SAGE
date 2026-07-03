@@ -1,0 +1,12 @@
+# Environment Summary
+
+Prepared: 2026-06-29
+
+- Analysis/reporting runtime observed in the local environment: Python 3.10.19.
+- LaTeX compiler used for the manuscript PDF: Tectonic 0.16.9.
+- Operating system observed for packaging: Windows.
+- Hardware-dependent training details are not included in this anonymous evidence package and will be documented with the anonymized code release when permitted.
+- Public CSV tables were generated from experiment result tables with paths, raw filenames, and participant aliases removed.
+- The artifact contains public result tables, paired-run evidence, sample/prediction summaries, and manuscript figures.
+- The validation script uses only the Python standard library.
+- The artifact does not contain raw EEG recordings, participant-identifying records, or machine-specific records.

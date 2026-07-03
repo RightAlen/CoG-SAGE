@@ -1,0 +1,6 @@
+dataset,role,total_chromatic_target_epochs,train_epochs,validation_epochs,test_epochs,random_seeds,selection_rule,notes
+Sub1,primary fixed split,2359,1508,379,472,"1;7;21;42;97",Validation-only checkpoint/model selection,Held-out test split used for reported fixed-split metrics.
+Sub1,session-stratified epoch-level fivefold CV,2359,,,,"1;7;21;42;97",Each outer fold evaluated once per seed,Every sample appears in exactly one outer test fold; this is not leave-one-session-out.
+Sub1,leave-one-session-out,2359,,,,"1;7;21;42;97",One complete session held out per outer split,Used as a session-shift stress test.
+Sub2,small-sample participant panel,350,224,56,70,"1;7;21;42;97",Validation-only checkpoint/model selection,Used only for participant-panel and transfer analyses.
+Sub1 to Sub2,source-side transfer setup,,1887,472,70,"1;7;21;42;97",Sub2 held-out test fixed at 70 epochs,Source-side split supplies Sub1 training and validation data where applicable.

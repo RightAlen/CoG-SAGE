@@ -1,0 +1,5 @@
+method,runs,accuracy_mean,accuracy_sd,top2_mean,top2_sd,observed_nonadjacent_error_mean,observed_nonadjacent_error_sd,observed_mean_circular_distance,observed_mean_circular_distance_sd,random_order_nonadjacent_error_mean,random_order_nonadjacent_error_sd,random_order_mean_circular_distance,random_order_mean_circular_distance_sd,interpretation
+CoG-SAGE,5,0.5305,0.0082,0.7331,0.0098,0.2758,0.0102,0.8924,0.0238,0.3129,0.0048,0.9392,0.0148,Residual errors are less distant on the predefined color ring than under random ring orders.
+w/o ordered-label terms,5,0.5220,0.0193,0.7314,0.0212,0.2843,0.0117,0.9212,0.0383,,,,,Removing ordered-label terms gives modest top-1 change and higher mean circular distance.
+DeepConvNet-CE + stabilization,5,0.4661,0.0185,0.7021,0.0146,0.3275,0.0079,1.0301,0.0305,,,,,Matched stabilization control has more distant residual errors.
+Random ring-order null,1000,,,,,,,,,0.3129,0.0048,0.9392,0.0148,Permutation reference for the predefined ring analysis.

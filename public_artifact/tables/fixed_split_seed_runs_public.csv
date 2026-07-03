@@ -1,0 +1,51 @@
+method,role,seed,split_seed,val_seed,selection_split,train_samples,validation_samples,test_samples,accuracy,kappa,top2,selection_rule
+Proposed model,reported method,1,42,2026,val,1508,379,472,0.5233050847457628,0.4438800624194883,0.7182203389830508,validation-selected checkpoint; held-out test untouched
+Proposed model,reported method,7,42,2026,val,1508,379,472,0.5360169491525424,0.4587070929227869,0.7351694915254238,validation-selected checkpoint; held-out test untouched
+Proposed model,reported method,21,42,2026,val,1508,379,472,0.5317796610169492,0.4537437551712943,0.7457627118644068,validation-selected checkpoint; held-out test untouched
+Proposed model,reported method,42,42,2026,val,1508,379,472,0.5211864406779662,0.44140549315319566,0.7330508474576272,validation-selected checkpoint; held-out test untouched
+Proposed model,reported method,97,42,2026,val,1508,379,472,0.5402542372881356,0.463664449913599,0.7330508474576272,validation-selected checkpoint; held-out test untouched
+EEGNet-CE,external EEG classifier,1,42,2026,val,1508,379,472,0.2796610169491525,0.1595133473344612,0.4576271186440678,validation-selected checkpoint; held-out test untouched
+EEGNet-CE,external EEG classifier,7,42,2026,val,1508,379,472,0.2711864406779661,0.14945599505497675,0.4724576271186441,validation-selected checkpoint; held-out test untouched
+EEGNet-CE,external EEG classifier,21,42,2026,val,1508,379,472,0.1673728813559322,0.02858788719855465,0.3241525423728814,validation-selected checkpoint; held-out test untouched
+EEGNet-CE,external EEG classifier,42,42,2026,val,1508,379,472,0.2690677966101695,0.14705050441560075,0.4978813559322034,validation-selected checkpoint; held-out test untouched
+EEGNet-CE,external EEG classifier,97,42,2026,val,1508,379,472,0.288135593220339,0.16951016432588684,0.4872881355932203,validation-selected checkpoint; held-out test untouched
+DeepConvNet-CE,external EEG classifier,1,42,2026,val,1508,379,472,0.461864406779661,0.3722221058584505,0.690677966101695,validation-selected checkpoint; held-out test untouched
+DeepConvNet-CE,external EEG classifier,7,42,2026,val,1508,379,472,0.4703389830508475,0.38212454902946436,0.7139830508474576,validation-selected checkpoint; held-out test untouched
+DeepConvNet-CE,external EEG classifier,21,42,2026,val,1508,379,472,0.4364406779661017,0.34261150031939513,0.6970338983050848,validation-selected checkpoint; held-out test untouched
+DeepConvNet-CE,external EEG classifier,42,42,2026,val,1508,379,472,0.4533898305084746,0.36234919571045576,0.7097457627118644,validation-selected checkpoint; held-out test untouched
+DeepConvNet-CE,external EEG classifier,97,42,2026,val,1508,379,472,0.4449152542372881,0.35259534591524233,0.6949152542372882,validation-selected checkpoint; held-out test untouched
+DeepConvNet-CE + stabilization,external EEG classifier training control,1,42,2026,val,1508,379,472,0.4766949152542373,0.3895294647438917,0.701271186440678,EMA 0.99 plus top-5 validation-checkpoint averaging; held-out test untouched
+DeepConvNet-CE + stabilization,external EEG classifier training control,7,42,2026,val,1508,379,472,0.4894067796610169,0.4043181592052827,0.7182203389830508,EMA 0.99 plus top-5 validation-checkpoint averaging; held-out test untouched
+DeepConvNet-CE + stabilization,external EEG classifier training control,21,42,2026,val,1508,379,472,0.4427966101694915,0.3500290595694997,0.6800847457627118,EMA 0.99 plus top-5 validation-checkpoint averaging; held-out test untouched
+DeepConvNet-CE + stabilization,external EEG classifier training control,42,42,2026,val,1508,379,472,0.4533898305084746,0.36232248334799555,0.6991525423728814,EMA 0.99 plus top-5 validation-checkpoint averaging; held-out test untouched
+DeepConvNet-CE + stabilization,external EEG classifier training control,97,42,2026,val,1508,379,472,0.4682203389830508,0.37960756795819084,0.711864406779661,EMA 0.99 plus top-5 validation-checkpoint averaging; held-out test untouched
+FBCNet-CE,external EEG classifier,1,42,2026,val,1508,379,472,0.3199152542372881,0.20676422083191537,0.4978813559322034,validation-selected checkpoint; held-out test untouched
+FBCNet-CE,external EEG classifier,7,42,2026,val,1508,379,472,0.3283898305084746,0.21629181114405127,0.4936440677966102,validation-selected checkpoint; held-out test untouched
+FBCNet-CE,external EEG classifier,21,42,2026,val,1508,379,472,0.3283898305084746,0.21652162074418502,0.4978813559322034,validation-selected checkpoint; held-out test untouched
+FBCNet-CE,external EEG classifier,42,42,2026,val,1508,379,472,0.3283898305084746,0.21645187136371014,0.527542372881356,validation-selected checkpoint; held-out test untouched
+FBCNet-CE,external EEG classifier,97,42,2026,val,1508,379,472,0.3305084745762712,0.21908312215962644,0.4745762711864407,validation-selected checkpoint; held-out test untouched
+FBMSNet/MSNN-CE,external EEG classifier,1,42,2026,val,1508,379,472,0.2838983050847458,0.16457989683973506,0.4555084745762712,validation-selected checkpoint; held-out test untouched
+FBMSNet/MSNN-CE,external EEG classifier,7,42,2026,val,1508,379,472,0.2902542372881356,0.17210758622134015,0.4915254237288136,validation-selected checkpoint; held-out test untouched
+FBMSNet/MSNN-CE,external EEG classifier,21,42,2026,val,1508,379,472,0.19915254237288135,0.06576253436313662,0.375,validation-selected checkpoint; held-out test untouched
+FBMSNet/MSNN-CE,external EEG classifier,42,42,2026,val,1508,379,472,0.19279661016949154,0.05826412090616795,0.3495762711864407,validation-selected checkpoint; held-out test untouched
+FBMSNet/MSNN-CE,external EEG classifier,97,42,2026,val,1508,379,472,0.24152542372881355,0.11490574240622697,0.4449152542372881,validation-selected checkpoint; held-out test untouched
+EEG-ConvTransformer-CE,external EEG classifier,1,42,2026,val,1508,379,472,0.1228813559322034,-0.0236466311146499,0.3050847457627119,validation-selected checkpoint; held-out test untouched
+EEG-ConvTransformer-CE,external EEG classifier,7,42,2026,val,1508,379,472,0.1864406779661017,0.0513357340256259,0.3389830508474576,validation-selected checkpoint; held-out test untouched
+EEG-ConvTransformer-CE,external EEG classifier,21,42,2026,val,1508,379,472,0.1546610169491525,0.0139533909619724,0.2944915254237288,validation-selected checkpoint; held-out test untouched
+EEG-ConvTransformer-CE,external EEG classifier,42,42,2026,val,1508,379,472,0.1525423728813559,0.010845077801645,0.288135593220339,validation-selected checkpoint; held-out test untouched
+EEG-ConvTransformer-CE,external EEG classifier,97,42,2026,val,1508,379,472,0.1588983050847457,0.0191886940591466,0.3305084745762712,validation-selected checkpoint; held-out test untouched
+EEGConformer-CE,external EEG classifier,1,42,2026,val,1508,379,472,0.3898305084745763,0.28823356930423494,0.5953389830508474,validation-selected checkpoint; held-out test untouched
+EEGConformer-CE,external EEG classifier,7,42,2026,val,1508,379,472,0.3665254237288136,0.26105578419360587,0.5826271186440678,validation-selected checkpoint; held-out test untouched
+EEGConformer-CE,external EEG classifier,21,42,2026,val,1508,379,472,0.3644067796610169,0.25859216285839937,0.5550847457627118,validation-selected checkpoint; held-out test untouched
+EEGConformer-CE,external EEG classifier,42,42,2026,val,1508,379,472,0.3898305084745763,0.2882037533512064,0.6313559322033898,validation-selected checkpoint; held-out test untouched
+EEGConformer-CE,external EEG classifier,97,42,2026,val,1508,379,472,0.3919491525423729,0.29067155386830745,0.614406779661017,validation-selected checkpoint; held-out test untouched
+EEG-Deformer-CE,external EEG classifier,1,42,2026,val,1508,379,472,0.298728813559322,0.18194147000455552,0.5127118644067796,validation-selected checkpoint; held-out test untouched
+EEG-Deformer-CE,external EEG classifier,7,42,2026,val,1508,379,472,0.3538135593220339,0.24626693752748752,0.559322033898305,validation-selected checkpoint; held-out test untouched
+EEG-Deformer-CE,external EEG classifier,21,42,2026,val,1508,379,472,0.3199152542372881,0.20672684244696216,0.5169491525423728,validation-selected checkpoint; held-out test untouched
+EEG-Deformer-CE,external EEG classifier,42,42,2026,val,1508,379,472,0.3326271186440678,0.22150954263423828,0.5635593220338984,validation-selected checkpoint; held-out test untouched
+EEG-Deformer-CE,external EEG classifier,97,42,2026,val,1508,379,472,0.3432203389830508,0.23387455690701453,0.5529661016949152,validation-selected checkpoint; held-out test untouched
+DBConformer-CE,external EEG classifier,1,42,2026,val,1508,379,472,0.18220338983050846,0.04616512224490854,0.3389830508474576,validation-selected checkpoint; held-out test untouched
+DBConformer-CE,external EEG classifier,7,42,2026,val,1508,379,472,0.2076271186440678,0.07577931121140091,0.3855932203389831,validation-selected checkpoint; held-out test untouched
+DBConformer-CE,external EEG classifier,21,42,2026,val,1508,379,472,0.2033898305084746,0.07084668383908188,0.3686440677966102,validation-selected checkpoint; held-out test untouched
+DBConformer-CE,external EEG classifier,42,42,2026,val,1508,379,472,0.2478813559322034,0.12279140381645415,0.4173728813559322,validation-selected checkpoint; held-out test untouched
+DBConformer-CE,external EEG classifier,97,42,2026,val,1508,379,472,0.22033898305084745,0.09053971977296993,0.413135593220339,validation-selected checkpoint; held-out test untouched

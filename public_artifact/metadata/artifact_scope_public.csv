@@ -1,0 +1,21 @@
+item,status,public_location,notes
+Manuscript source package,included separately,source package,Anonymous LaTeX source and manuscript figures are packaged outside this materials directory.
+License terms,included,LICENSE.md,Release terms for included validation code and generated public materials.
+Aggregate result tables,included,tables/main_results_public.csv; tables/robustness_public.csv; tables/ablation_public.csv,Numerical summaries matching manuscript tables.
+Fixed-split seed-run evidence,included,tables/fixed_split_seed_runs_public.csv,Per-seed rows for recomputing five-seed main-table means and sample standard deviations.
+Sub2 seed-paired evidence,included,tables/sub2_seed_runs_public.csv; tables/sub2_paired_deltas_public.csv,Per-seed Sub2 rows and target-only paired deltas for the small-sample feasibility and class-profile analysis.
+Per-class decodability profiles,included,tables/subject_decodability_per_class_public.csv,Model-level class-wise accuracy profiles for Sub1 and Sub2; these are not subjective preference ratings.
+DeepConvNet paired evidence,included,tables/deepconvnet_paired_evidence_public.csv; tables/deepconvnet_fixedsplit_mcnemar_public.csv; tables/deepconvnet_session_stratified_5fold_paired_runs_public.csv; tables/deepconvnet_loso_paired_runs_public.csv; tables/deepconvnet_stabilized_session_stratified_5fold_paired_runs_public.csv; tables/deepconvnet_stabilized_loso_paired_runs_public.csv,Fixed-split McNemar summaries plus run-level paired comparisons for original and stabilized DeepConvNet controls.
+Fixed-split sample assignment and prediction tables,included,metadata/fixed_split_sample_manifest_public.csv; metadata/fixed_split_assignments_public.csv; tables/fixed_split_test_predictions_public.csv,Private filenames and participant aliases are removed; assignment rows identify train validation and test roles.
+Fig. 3 decision/attribution summary,included,tables/model_feature_attribution_summary_public.csv,Seed-aligned decision-margin color-distance and attribution summary used for the manuscript figure.
+Temporal-window sensitivity,included,tables/window_sensitivity_public.csv,Fixed-split five-seed summaries for neighboring early visual decoding windows.
+Model configuration summary,included,metadata/model_configuration_public.csv,Configuration values for the reported experiments.
+Stimulus attributes,included,metadata/stimulus_attributes_public.csv,Nominal sRGB/PsychoPy/HSV/relative-luminance values for the seven chromatic target labels.
+Closest-prior matrix,included,metadata/closest_prior_matrix_public.csv,Positioning table for closest related visual/color EEG study families.
+Figures,included,figures/,Final figure PDFs used by the manuscript.
+Environment summary,included,metadata/environment_summary_public.txt,Short runtime and rendering summary for manuscript checking.
+Package validation script,included,scripts/validate_public_artifact.py,Standard-library script for file presence; row counts; seed-run recomputation; paired deltas; and public text checks.
+Code and data access boundary,included,CODE_AND_DATA_ACCESS.md,Statement of included derived materials and restricted raw-data/code-release boundary.
+Raw EEG recordings,not included,,Access is subject to consent and institutional permissions.
+Non-release development records,not included,,Excluded from the anonymous release.
+Preprocessing/training/evaluation code,planned for anonymized code release,,Validation code and released figures are public; preprocessing training evaluation and figure-generation source code will be released with local paths and identifiers removed.

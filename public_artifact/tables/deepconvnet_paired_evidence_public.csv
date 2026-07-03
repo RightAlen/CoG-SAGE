@@ -1,0 +1,7 @@
+comparison,scope,units,positive_count,negative_count,tie_count,accuracy_delta_pp,exact_p,interpretation
+Proposed model vs DeepConvNet-CE,fixed split,paired seeds,5,0,0,7.71,0.0625,Five-seed paired comparison on the fixed split.
+Proposed model vs DeepConvNet-CE + stabilization,fixed split,paired seeds,5,0,0,6.44,0.0625,"Same architecture with mixup, EMA, and checkpoint averaging."
+Proposed model vs DeepConvNet-CE,session-stratified epoch-level fivefold CV,fold-seed runs,24,1,0,4.66,1.55e-6,Paired run-level comparison; fold summaries aggregate repeated seeds.
+Proposed model vs DeepConvNet-CE + stabilization,session-stratified epoch-level fivefold CV,fold-seed runs,20,5,0,3.22,0.00408,"Same DeepConvNet architecture trained with mixup, EMA, and checkpoint averaging."
+Proposed model vs DeepConvNet-CE,leave-one-session-out,session-seed runs,18,2,0,3.00,4.02e-4,Paired run-level comparison; session summaries aggregate repeated seeds.
+Proposed model vs DeepConvNet-CE + stabilization,leave-one-session-out,session-seed runs,18,2,0,2.85,4.02e-4,"Same DeepConvNet architecture trained with mixup, EMA, and checkpoint averaging."

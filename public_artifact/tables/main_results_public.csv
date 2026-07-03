@@ -1,0 +1,13 @@
+method,role,runs,accuracy_mean,accuracy_sd,kappa_mean,kappa_sd,top2_mean,top2_sd,notes
+Chance expected,sanity,1,0.1429,,0.0000,,0.2857,,Seven-class chance expectation.
+Majority class,sanity,1,0.1441,,0.0000,,0.2860,,Train-label-prior sanity row.
+EEGNet-CE,external EEG classifier,5,0.2551,0.0496,0.1308,0.0578,0.4479,0.0708,Matched labels and split.
+DeepConvNet-CE,external EEG classifier,5,0.4534,0.0134,0.3624,0.0156,0.7013,0.0100,Strongest external comparison in the main table.
+DeepConvNet-CE + stabilization,external EEG classifier training control,5,0.4661,0.0185,0.3772,0.0215,0.7021,0.0146,DeepConvNet-CE with the same mixup EMA and top-5 validation-checkpoint averaging used by the reported model.
+FBCNet-CE,external EEG classifier,5,0.3271,0.0041,0.2150,0.0048,0.4983,0.0190,Matched labels and split.
+FBMSNet/MSNN-CE,external EEG classifier,5,0.2415,0.0457,0.1151,0.0533,0.4233,0.0590,Matched labels and split.
+EEG-ConvTransformer-CE,external EEG classifier,5,0.1551,0.0226,0.0143,0.0267,0.3114,0.0223,Matched labels and split.
+EEGConformer-CE,external EEG classifier,5,0.3805,0.0138,0.2774,0.0161,0.5958,0.0293,Matched labels and split.
+EEG-Deformer-CE,external EEG classifier,5,0.3297,0.0214,0.2181,0.0250,0.5411,0.0243,Matched labels and split.
+DBConformer-CE,external EEG classifier,5,0.2123,0.0242,0.0812,0.0282,0.3847,0.0325,Matched labels and split.
+Proposed model,reported method,5,0.5305,0.0082,0.4523,0.0095,0.7331,0.0098,Fixed-split result reported in the manuscript.

@@ -1,0 +1,26 @@
+reference_method,comparator_method,seed,reference_accuracy,comparator_accuracy,reference_minus_comparator_accuracy_delta_pp,direction
+Sub2 target-only,Sub1 source-only,1,0.21428571428571427,0.17142857142857143,4.2857,target_only_higher
+Sub2 target-only,Sub1 source-only,7,0.35714285714285715,0.18571428571428572,17.1429,target_only_higher
+Sub2 target-only,Sub1 source-only,21,0.32857142857142857,0.15714285714285714,17.1429,target_only_higher
+Sub2 target-only,Sub1 source-only,42,0.35714285714285715,0.17142857142857143,18.5714,target_only_higher
+Sub2 target-only,Sub1 source-only,97,0.35714285714285715,0.17142857142857143,18.5714,target_only_higher
+Sub2 target-only,Sub1 pretrain + Sub2 fine-tune,1,0.21428571428571427,0.18571428571428572,2.8571,target_only_higher
+Sub2 target-only,Sub1 pretrain + Sub2 fine-tune,7,0.35714285714285715,0.18571428571428572,17.1429,target_only_higher
+Sub2 target-only,Sub1 pretrain + Sub2 fine-tune,21,0.32857142857142857,0.17142857142857143,15.7143,target_only_higher
+Sub2 target-only,Sub1 pretrain + Sub2 fine-tune,42,0.35714285714285715,0.2714285714285714,8.5714,target_only_higher
+Sub2 target-only,Sub1 pretrain + Sub2 fine-tune,97,0.35714285714285715,0.18571428571428572,17.1429,target_only_higher
+Sub2 target-only,Sub1+Sub2 pooled supervised,1,0.21428571428571427,0.21428571428571427,0.0000,tie
+Sub2 target-only,Sub1+Sub2 pooled supervised,7,0.35714285714285715,0.2571428571428571,10.0000,target_only_higher
+Sub2 target-only,Sub1+Sub2 pooled supervised,21,0.32857142857142857,0.21428571428571427,11.4286,target_only_higher
+Sub2 target-only,Sub1+Sub2 pooled supervised,42,0.35714285714285715,0.22857142857142856,12.8571,target_only_higher
+Sub2 target-only,Sub1+Sub2 pooled supervised,97,0.35714285714285715,0.22857142857142856,12.8571,target_only_higher
+Sub2 target-only,Sub1+Sub2 SSL + Sub2 fine-tune,1,0.21428571428571427,0.3142857142857143,-10.0000,target_only_lower
+Sub2 target-only,Sub1+Sub2 SSL + Sub2 fine-tune,7,0.35714285714285715,0.34285714285714286,1.4286,target_only_higher
+Sub2 target-only,Sub1+Sub2 SSL + Sub2 fine-tune,21,0.32857142857142857,0.2857142857142857,4.2857,target_only_higher
+Sub2 target-only,Sub1+Sub2 SSL + Sub2 fine-tune,42,0.35714285714285715,0.2571428571428571,10.0000,target_only_higher
+Sub2 target-only,Sub1+Sub2 SSL + Sub2 fine-tune,97,0.35714285714285715,0.24285714285714285,11.4286,target_only_higher
+Sub2 target-only,Sub2 SSL + fine-tune,1,0.21428571428571427,0.3,-8.5714,target_only_lower
+Sub2 target-only,Sub2 SSL + fine-tune,7,0.35714285714285715,0.32857142857142857,2.8571,target_only_higher
+Sub2 target-only,Sub2 SSL + fine-tune,21,0.32857142857142857,0.2857142857142857,4.2857,target_only_higher
+Sub2 target-only,Sub2 SSL + fine-tune,42,0.35714285714285715,0.32857142857142857,2.8571,target_only_higher
+Sub2 target-only,Sub2 SSL + fine-tune,97,0.35714285714285715,0.35714285714285715,0.0000,tie

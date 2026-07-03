@@ -1,0 +1,4 @@
+study_family,citations,main_setting,contribution_to_surrounding_evidence,relevance_to_this_work
+Color-command EEG,Shrestha and Adhikari 2023,Two- and four-color command classification with low-cost EEG,Shows that color-linked EEG commands can be decoded in compact BCI settings,Direct color-classification anchor for seven-label transient color decoding
+EEG image reconstruction,BrainVis 2023; BrainDecoder 2024,Natural-image content or style reconstruction from image-viewing EEG,Demonstrates that visual EEG can align with semantic or generative visual spaces,Related visual representation work around a different output space
+Chromatic VEP and SSVEP physiology,Aminaka 2015; Du 2022; Pompe 2020; Zheng 2020; Shapley 2025,Color-dependent stimulation physiology color-vision assessment and BCI stimulus analysis,Establishes color-evoked response measurement for physiology diagnosis and stimulation design,Biomedical motivation for controlled chromatic response benchmarking

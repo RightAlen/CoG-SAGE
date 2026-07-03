@@ -1,0 +1,7 @@
+comparison,seed,n_trials,proposed_correct_deepconvnet_wrong,proposed_wrong_deepconvnet_correct,accuracy_delta,mcnemar_exact_p,scope
+Proposed model vs DeepConvNet-CE,1,472,77,48,0.061441,0.011959,per_seed
+Proposed model vs DeepConvNet-CE,7,472,80,49,0.065678,0.008008,per_seed
+Proposed model vs DeepConvNet-CE,21,472,81,36,0.095339,0.000039,per_seed
+Proposed model vs DeepConvNet-CE,42,472,74,42,0.067797,0.003807,per_seed
+Proposed model vs DeepConvNet-CE,97,472,96,51,0.095339,0.000257,per_seed
+Proposed model vs DeepConvNet-CE,pooled_seed_trial_pairs,2360,408,226,0.077119,0.000000,pooled_seed_trial_pairs_summary

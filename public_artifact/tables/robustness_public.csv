@@ -1,0 +1,7 @@
+protocol,method,role,runs,accuracy_mean_percent,accuracy_sd_percent,top2_mean_percent,top2_sd_percent,paired_delta_accuracy_vs_deepconvnet_pp,paired_sign_summary,exact_sign_p,notes
+Session-stratified epoch-level fivefold CV,Proposed model,reported method,25,51.93,1.43,75.19,1.35,4.66,24 positive of 25 paired runs,1.55e-6,Strict multi-session CV; not leave-one-session-out.
+Session-stratified epoch-level fivefold CV,DeepConvNet-CE,external EEG classifier,25,47.27,2.47,71.87,1.85,,,,Reference row for paired comparison.
+Session-stratified epoch-level fivefold CV,DeepConvNet-CE + stabilization,external EEG classifier with matched training stabilization,25,48.71,2.04,72.59,1.69,,,,"Same mixup, EMA, and checkpoint averaging as the reported model."
+Leave-one-session-out,Proposed model,reported method,20,48.15,3.67,71.37,3.02,3.00,18 positive of 20 paired runs,4.02e-4,Session-shift stress test.
+Leave-one-session-out,DeepConvNet-CE,external EEG classifier,20,45.14,3.80,69.04,2.66,,,,Reference row for paired comparison.
+Leave-one-session-out,DeepConvNet-CE + stabilization,external EEG classifier with matched training stabilization,20,45.30,3.50,70.18,3.52,,,,"Same mixup, EMA, and checkpoint averaging as the reported model."

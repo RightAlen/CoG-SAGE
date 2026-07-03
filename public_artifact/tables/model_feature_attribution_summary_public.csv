@@ -1,0 +1,16 @@
+metric,value,unit,notes
+n_samples,472,count,Held-out epochs used for Fig. 3 diagnostic summary.
+n_archives,5,count,Five seed archives used in the seed-aligned summary.
+combine_mode,seed_aligned_mean,text,Fig. 3 diagnostic combination mode.
+accuracy,0.5614406779661016,proportion,Seed-aligned mean-probability accuracy used only for Fig. 3 diagnostics.
+mean_true_class_probability,0.326322466135025,probability,Mean probability assigned to the true class.
+correct_mean_margin,0.20681822299957275,probability margin,Mean top-1 minus top-2 probability margin for correct predictions.
+error_mean_margin,0.13245882093906403,probability margin,Mean top-1 minus top-2 probability margin for errors.
+adjacent_error_rate,0.17584745762711865,proportion,Held-out samples predicted one step away on the color ring.
+nonadjacent_error_rate,0.2627118644067797,proportion,Held-out samples predicted more than one step away on the color ring.
+mean_circular_distance,0.8411016949152542,ring steps,Mean circular distance between true and predicted class.
+time_saliency_max,0.036404844373464584,standardized attribution,Maximum temporal gradient-times-input saliency.
+time_saliency_mean,0.00567091116681695,standardized attribution,Mean temporal gradient-times-input saliency.
+srm_gate_absmax,0.18562118709087372,gate magnitude,Maximum absolute learned SRM gate value.
+band_occlusion_max,0.33687499165534973,probability drop,Maximum channel-band occlusion drop.
+band_occlusion_mean,0.004703712649643421,probability drop,Mean channel-band occlusion drop.

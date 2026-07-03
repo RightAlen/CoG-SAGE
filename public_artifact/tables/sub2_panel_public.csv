@@ -1,0 +1,7 @@
+method,test_dataset,runs,source_train_epochs,source_validation_epochs,target_train_epochs,target_validation_epochs,target_test_epochs,accuracy_mean_percent,accuracy_sd_percent,kappa_mean,kappa_sd,top2_mean_percent,top2_sd_percent,interpretation
+Sub2 target-only,Sub2,5,,,224,56,70,32.29,6.19,0.2100,0.0723,49.43,4.58,Above chance under small-sample target-only training.
+Sub1 source-only,Sub2,5,1887,472,0,0,70,17.14,1.01,0.0333,0.0118,27.43,2.75,Source-only transfer remains weak.
+Sub1 pretrain + Sub2 fine-tune,Sub2,5,1887,472,224,56,70,20.00,4.04,0.0667,0.0471,34.57,8.04,Below target-only Sub2 training.
+Sub1+Sub2 pooled supervised,Sub2,5,1887,472,224,56,70,22.86,1.75,0.1000,0.0204,42.00,3.86,Below target-only Sub2 training.
+Sub1+Sub2 SSL + Sub2 fine-tune,Sub2,5,1887,472,224,56,70,28.86,4.09,0.1700,0.0477,48.00,2.60,Closer to target-only but still not superior.
+Sub2 SSL + fine-tune,Sub2,5,,,224,56,70,32.00,2.78,0.2067,0.0325,47.43,2.75,Comparable to target-only Sub2 training.

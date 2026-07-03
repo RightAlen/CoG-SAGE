@@ -1,0 +1,7 @@
+control_family,runs,validation_accuracy_percent,validation_accuracy_sd_percent,test_accuracy_percent,test_accuracy_sd_percent,test_kappa_mean,test_kappa_sd,test_top2_percent,test_top2_sd_percent,interpretation
+Train class prior scores,1,14.25,0.00,14.19,0.00,0.0000,0.0000,28.60,0.00,No-EEG label-prior sanity check.
+Pre-stimulus Riemannian/tangent nearest-centroid,5,13.98,0.00,14.41,0.00,0.0018,0.0000,26.91,0.00,Pre-stimulus control near chance.
+Shuffled-label shrinkage LDA,5,15.99,2.72,13.09,1.12,-0.0139,0.0130,27.54,1.48,Shuffled labels remain near chance.
+Post-onset covariance shrinkage LDA,5,13.19,0.00,13.98,0.00,-0.0033,0.0000,27.97,0.00,Covariance-only summary near chance.
+Post-onset Riemannian/tangent shrinkage LDA,5,15.30,0.00,12.50,0.00,-0.0207,0.0000,26.91,0.00,Riemannian/tangent-only summary near chance.
+Post-onset ERP/bandpower linear SVM,5,32.72,0.00,25.21,0.00,0.1275,0.0000,43.43,0.00,Handcrafted feature control below neural network comparisons.
