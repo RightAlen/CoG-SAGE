@@ -32,8 +32,11 @@ models*/
 weights*/
 runs*/
 outputs*/
+results*/
 train*/
 train_*/
+!training_code/
+!training_code/**
 *_diagnostics/
 *.edf
 *.bdf

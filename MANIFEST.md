@@ -10,6 +10,9 @@
 - `scripts/draw_paradigm_timeline.py`
 - `scripts/draw_overall_framework.py`
 - `scripts/plot_model_decision_attribution.py`
+- `training_code/README.md`
+- `training_code/configs/minimal_training_config.json`
+- `training_code/train_color_eeg.py`
 - `public_artifact/README.md`
 - `public_artifact/MANIFEST.md`
 - `public_artifact/CODE_AND_DATA_ACCESS.md`

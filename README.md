@@ -9,6 +9,7 @@ This repository contains anonymous public materials accompanying the BIBM submis
 - `scripts/draw_paradigm_timeline.py`: source for the paradigm timeline figure.
 - `scripts/draw_overall_framework.py`: source for the framework figure.
 - `scripts/plot_model_decision_attribution.py`: reference source for the decision/attribution figure; the seed-aligned export files needed to rerun this plot are not included in the anonymous package.
+- `training_code/`: anonymous minimal training code for the proposed model and baseline families. It includes model definitions, a path-neutral NPZ data interface, and a no-data model-construction check; it does not include or generate EEG data.
 - `configs/reported_model_config.json`: public configuration values for the reported model.
 - `LICENSE.md`: release terms for included code and generated materials.
 
@@ -33,8 +34,16 @@ Generated files are written to `generated_figures/`.
 
 The Fig. 3 plotting script is included as reference source. It is not part of the quick-check path because the seed-aligned export files used to generate the published figure are not included in this anonymous package.
 
+The anonymous training scaffold can be inspected without data:
+
+```bash
+python training_code/train_color_eeg.py check-models
+```
+
+Training requires a permitted de-identified `.npz` file matching the interface in `training_code/README.md`.
+
 ## Scope
 
-This anonymous release supports inspection of the reported aggregate values, paired comparison tables, figure PDFs, and selected plotting sources. It does not include raw EEG recordings, consent documents, ethics records, participant-identifying records, or non-release development records.
+This anonymous release supports inspection of the reported aggregate values, paired comparison tables, figure PDFs, selected plotting sources, and anonymous training-code structure. It does not include raw EEG recordings, generated EEG surrogates, consent documents, ethics records, participant-identifying records, or non-release development records.
 
-Full preprocessing, training, and evaluation runners are outside this anonymous materials package because they depend on non-public raw-data paths and acquisition records. Additional runner or raw-data access requires de-identification, consent scope, and institutional permission.
+Full preprocessing and raw-data export runners are outside this anonymous materials package because they depend on non-public raw-data paths and acquisition records. Additional runner or raw-data access requires de-identification, consent scope, and institutional permission.

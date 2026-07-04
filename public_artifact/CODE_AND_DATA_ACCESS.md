@@ -2,7 +2,7 @@
 
 ## Included Now
 
-This anonymous package includes public result tables, paired-run summaries, per-class decodability profiles, stimulus-attribute diagnostics, fixed-split sample and prediction summaries, stabilized DeepConvNet fixed-split prediction pairs, manuscript figures, split/seed metadata, an environment summary, and validation scripts.
+This anonymous package includes public result tables, paired-run summaries, per-class decodability profiles, stimulus-attribute diagnostics, fixed-split sample and prediction summaries, stabilized DeepConvNet fixed-split prediction pairs, manuscript figures, split/seed metadata, an environment summary, validation scripts, and anonymous training-code scaffolds in the repository root.
 
 Run the consistency check from this directory:
 
@@ -12,7 +12,7 @@ python scripts/validate_public_artifact.py --root .
 
 ## Code Release Boundary
 
-The anonymous materials include validation code, released-table summaries, configuration values, selected plotting sources, and manuscript figure PDFs suitable for checking the reported aggregate values and paired fixed-split comparisons. Full preprocessing, training, evaluation, and raw-export plotting runners are outside this anonymous package because they depend on non-public raw-data paths and acquisition records. Additional runner access requires removing identifying details where permitted. The model-configuration values needed to interpret the reported experiments are included in `metadata/model_configuration_public.csv`.
+The anonymous materials include validation code, released-table summaries, configuration values, selected plotting sources, manuscript figure PDFs, and a path-neutral training scaffold suitable for inspecting the proposed and baseline model families. Full preprocessing and raw-export plotting runners are outside this anonymous package because they depend on non-public raw-data paths and acquisition records. Additional runner access requires removing identifying details where permitted. The model-configuration values needed to interpret the reported experiments are included in `metadata/model_configuration_public.csv`.
 
 ## Data Access Boundary
 
