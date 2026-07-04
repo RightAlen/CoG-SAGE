@@ -1,6 +1,5 @@
 variant,runs,accuracy_mean,accuracy_sd,kappa_mean,kappa_sd,top2_mean,top2_sd,interpretation
 Full proposed model,5,0.5305,0.0082,0.4523,0.0095,0.7331,0.0098,Reference full stack.
-w/o color-contrastive loss,5,0.5305,0.0082,0.4523,0.0095,0.7331,0.0098,No measurable effect in this configuration.
 w/o HSV prototype logits,5,0.5229,0.0140,0.4434,0.0163,0.7280,0.0139,Small top-1 drop.
 w/o gated adjacent class query,5,0.5208,0.0137,0.4409,0.0160,0.7360,0.0166,Small top-1 drop; top-2 remains high.
 w/o ordered-label terms,5,0.5220,0.0193,0.4424,0.0225,0.7314,0.0212,Combined removal gives mixed top-1 effects but higher label-ring distance errors.

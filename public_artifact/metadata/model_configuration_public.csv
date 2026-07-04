@@ -10,7 +10,6 @@ epoch_rejection_policy,no_automatic_amplitude_rejection,preprocessing,Epochs wer
 reported_channel_set,O1|O2|T5|T6|P3|P4,preprocessing,Posterior six-channel set used by the reported model; all-16-channel rerun is summarized separately.
 epoch_window_samples,220:600,preprocessing,Post-stimulus analysis window used for the reported experiments.
 fixed_split_seeds,1;7;21;42;97,evaluation,Five model seeds used for fixed-split and Sub2 panel summaries.
-color_contrastive_weight,0.02,training,Weight for same-label supervised contrastive regularization.
 hsv_prototype_logit_scale,0.005,structured_head,Scale for HSV prototype logits.
 class_query_logit_scale,0.01,structured_head,Scale for adjacent class-query residual logits.
 class_query_gate_bias,-2.5,structured_head,Gate bias for adjacent class-query residual logits.

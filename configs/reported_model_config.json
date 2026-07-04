@@ -12,7 +12,6 @@
   "fixed_split_seeds": [1, 7, 21, 42, 97],
   "split_seed": 42,
   "validation_seed": 2026,
-  "color_contrastive_weight": 0.02,
   "hsv_prototype_logit_scale": 0.005,
   "class_query_logit_scale": 0.01,
   "class_query_gate_bias": -2.5,

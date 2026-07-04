@@ -43,13 +43,13 @@ EXPECTED_COUNTS = {
     "metadata/splits_and_seeds.csv": 5,
     "tables/fixed_split_seed_runs_public.csv": 50,
     "tables/main_results_public.csv": 12,
-    "tables/ablation_public.csv": 11,
+    "tables/ablation_public.csv": 10,
     "tables/additional_controls_public.csv": 6,
     "tables/color_neighborhood_error_public.csv": 4,
     "tables/sub2_seed_runs_public.csv": 30,
     "tables/sub2_paired_deltas_public.csv": 25,
     "tables/subject_decodability_per_class_public.csv": 7,
-    "tables/component_paired_evidence_public.csv": 10,
+    "tables/component_paired_evidence_public.csv": 9,
     "tables/window_sensitivity_public.csv": 3,
     "tables/deepconvnet_paired_evidence_public.csv": 6,
     "tables/deepconvnet_fixedsplit_mcnemar_public.csv": 6,
@@ -62,7 +62,7 @@ EXPECTED_COUNTS = {
     "tables/model_feature_attribution_summary_public.csv": 15,
     "tables/channel_scope_summary_public.csv": 2,
     "tables/channel_scope_paired_public.csv": 5,
-    "metadata/model_configuration_public.csv": 29,
+    "metadata/model_configuration_public.csv": 28,
     "metadata/stimulus_attributes_public.csv": 7,
     "metadata/closest_prior_matrix_public.csv": 3,
     "metadata/fixed_split_sample_manifest_public.csv": 2359,
@@ -1062,7 +1062,6 @@ def check_public_values(root: Path, errors: list[str]) -> dict[str, object]:
     comp_hsv = find_row(component, "variant", "w/o HSV prototype logits")
     comp_adjacent = find_row(component, "variant", "w/o gated adjacent class query")
     comp_ordered = find_row(component, "variant", "w/o ordered-label terms")
-    comp_contrastive = find_row(component, "variant", "w/o color-contrastive loss")
     comp_ema = find_row(component, "variant", "w/o EMA/checkpoint averaging")
     comp_session_cov = find_row(component, "variant", "w/o session/covariance branch")
     comp_car = find_row(component, "variant", "no CAR front-end")
@@ -1089,12 +1088,6 @@ def check_public_values(root: Path, errors: list[str]) -> dict[str, object]:
         "component ordered-label circular-distance delta",
         comp_ordered["full_minus_variant_circular_distance_delta_mean"],
         -0.0288,
-    )
-    require_close(
-        errors,
-        "component contrastive accuracy delta pp",
-        comp_contrastive["full_minus_variant_accuracy_delta_pp_mean"],
-        0.0,
     )
     require_close(
         errors,
@@ -1157,7 +1150,6 @@ def check_public_values(root: Path, errors: list[str]) -> dict[str, object]:
     require_close(errors, "Fig. 3 mean circular distance", feature["mean_circular_distance"], 0.8411016949152542)
 
     config = {row["parameter"]: row["value"] for row in read_csv(root / "metadata/model_configuration_public.csv")}
-    require_close(errors, "config color contrastive weight", config["color_contrastive_weight"], 0.02)
     require_close(errors, "config HSV prototype scale", config["hsv_prototype_logit_scale"], 0.005)
     require_close(errors, "config class-query scale", config["class_query_logit_scale"], 0.01)
     require_close(errors, "config class-query gate bias", config["class_query_gate_bias"], -2.5)

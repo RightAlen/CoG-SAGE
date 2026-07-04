@@ -207,7 +207,7 @@ def main() -> None:
     # Panel 4: color geometry and outputs.
     draw_color_ring(ax, 11.2, 3.9, 0.48)
     rounded_box(ax, 10.78, 2.6, 2.36, 0.55, "HSV prototype logits", fill="#ffffff", fontsize=8.2)
-    rounded_box(ax, 10.78, 1.94, 2.36, 0.55, "color contrastive guidance", fill="#ffffff", fontsize=8.2)
+    rounded_box(ax, 10.78, 1.94, 2.36, 0.55, "prototype logit regularization", fill="#ffffff", fontsize=8.2)
     rounded_box(ax, 10.78, 1.28, 2.36, 0.55, "adjacent class-query residuals", fill="#ffffff", fontsize=8.0)
     rounded_box(ax, 10.78, 0.88, 2.36, 0.28, "prediction + error analysis", fill=PURPLE, fontsize=7.2, weight="bold")
     arrow(ax, (11.2, 3.38), (11.2, 3.18), color="#6b7280", mutation_scale=11)
