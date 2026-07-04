@@ -18,4 +18,4 @@ Package validation script,included,scripts/validate_public_artifact.py,Standard-
 Code and data access boundary,included,CODE_AND_DATA_ACCESS.md,Statement of included derived materials and restricted raw-data/code-release boundary.
 Raw EEG recordings,not included,,Access is subject to consent and institutional permissions.
 Non-release development records,not included,,Excluded from the anonymous release.
-Preprocessing/training/evaluation code,outside anonymous result-checking scope,,Validation code and released figure sources are public; full preprocessing training evaluation and raw-export plotting runners will be released with local paths and identifiers removed where permitted.
+Preprocessing/training/evaluation code,outside anonymous materials scope,,Consistency code and released figure sources are public; full preprocessing training evaluation and raw-export plotting runners will be released with local paths and identifiers removed where permitted.

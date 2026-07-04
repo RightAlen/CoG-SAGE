@@ -2,7 +2,7 @@
 
 ## Included Now
 
-This anonymous package includes public result tables, paired-run summaries, per-class decodability profiles, fixed-split sample and prediction summaries, manuscript figures, split/seed metadata, an environment summary, and a validation script.
+This anonymous package includes public result tables, paired-run summaries, per-class decodability profiles, fixed-split sample and prediction summaries, manuscript figures, split/seed metadata, an environment summary, and a consistency script.
 
 Run the consistency check from this directory:
 
@@ -12,7 +12,7 @@ python scripts/validate_public_artifact.py --root .
 
 ## Code Release Boundary
 
-The anonymous materials include validation code, table-consistency checks, configuration values, figure sources, and manuscript figure PDFs suitable for checking the reported aggregate values. Full preprocessing, training, evaluation, and raw-export plotting runners are outside this anonymous result-checking package and will be released with local paths and identifiers removed where permitted. The model-configuration values needed to interpret the reported experiments are included in `metadata/model_configuration_public.csv`.
+The anonymous materials include consistency code, table-comparison checks, configuration values, figure sources, and manuscript figure PDFs suitable for checking the reported aggregate values. Full preprocessing, training, evaluation, and raw-export plotting runners are outside this anonymous materials package and will be released with local paths and identifiers removed where permitted. The model-configuration values needed to interpret the reported experiments are included in `metadata/model_configuration_public.csv`.
 
 ## Data Access Boundary
 
@@ -20,12 +20,12 @@ Raw EEG recordings are not included in this anonymous package. Access to raw rec
 
 Expected access classes are:
 
-- Public without raw EEG: generated tables, anonymized split/seed metadata, manuscript figures, model-configuration summaries, validation code, and anonymized prediction/sample summaries.
+- Public without raw EEG: generated tables, anonymized split/seed metadata, manuscript figures, model-configuration summaries, consistency code, and anonymized prediction/sample summaries.
 - Available after acceptance when permitted: de-identified raw or minimally processed EEG needed to rerun preprocessing and training, distributed through a public release or controlled-access route subject to consent scope, institutional review, and any required data-use agreement.
 - Not released by this package: consent forms, ethics-board records, participant-identifying records, acquisition notes, and machine-specific records.
 
-If raw EEG access cannot be granted, the derived result tables, fixed-split sample/prediction summaries, DeepConvNet paired-run tables, per-class decodability profiles, fold/session block summaries, and validation code can still support checking the reported aggregate values and rerunning the analysis on permitted data.
+If raw EEG access cannot be granted, the derived result tables, fixed-split sample/prediction summaries, DeepConvNet paired-run tables, per-class decodability profiles, fold/session block summaries, and consistency code can still support checking the reported aggregate values and rerunning the analysis on permitted data.
 
 ## License
 
-Release terms for the included validation code, generated tables, metadata, and figures are stated in `LICENSE.md`. Raw EEG recordings, consent documents, and participant-identifying records are not licensed by this package.
+Release terms for the included consistency code, generated tables, metadata, and figures are stated in `LICENSE.md`. Raw EEG recordings, consent documents, and participant-identifying records are not licensed by this package.

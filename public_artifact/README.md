@@ -7,7 +7,7 @@ This package contains public materials that match the anonymous BIBM manuscript.
 - `tables/`: reported numerical summaries, fixed-split seed runs, Sub2 seed-paired evidence, per-class decodability profiles, component-level paired evidence, channel-scope comparisons, fixed-split test predictions, Fig. 3 decision/attribution summaries, and DeepConvNet paired-run evidence in CSV format.
 - `metadata/`: anonymized split and random-seed metadata, fixed-split sample manifest and split-role assignments, material scope, and environment summary.
 - `figures/`: final figure PDFs used by the manuscript.
-- `scripts/`: standard-library validation code for checking included files and recomputing reported summary values.
+- `scripts/`: standard-library consistency code for checking included files and recomputing reported summary values.
 - `CODE_AND_DATA_ACCESS.md`: code-release and raw-data access boundary.
 - `LICENSE.md`: release terms for the included code and generated public materials.
 
@@ -37,7 +37,7 @@ This anonymous release omits raw EEG, participant-identifying records, ethics do
 - The Fig. 3 seed-aligned decision/attribution summary is reported in `tables/model_feature_attribution_summary_public.csv`; `tables/fixed_split_test_predictions_public.csv` provides the matching held-out prediction labels.
 - The closest-prior matrix is a public positioning table, not a numerical benchmark.
 
-## Local Validation
+## Local Consistency Check
 
 From the package directory, run:
 
@@ -45,4 +45,4 @@ From the package directory, run:
 python scripts/validate_public_artifact.py --root .
 ```
 
-The script checks included files, expected row counts, CSV schemas, fixed-split role counts, fixed-split seed-run recomputation, Sub2 paired-delta and top-2 consistency, per-class decodability values, selected manuscript-table values, component-level paired evidence, channel-scope comparisons, DeepConvNet paired-run deltas, Fig. 3 feature/attribution values, and fixed-split prediction membership in the anonymized sample manifest.
+The script compares included files, expected row counts, CSV schemas, fixed-split role counts, fixed-split seed-run recomputation, Sub2 paired-delta and top-2 consistency, per-class decodability values, selected manuscript-table values, component-level paired evidence, channel-scope comparisons, DeepConvNet paired-run deltas, Fig. 3 feature/attribution values, and fixed-split prediction membership in the anonymized sample manifest.
