@@ -15,9 +15,9 @@ This package contains public materials that match the anonymous BIBM manuscript.
 
 The primary dataset is an anonymized multi-session participant dataset denoted Sub1, with 2,359 chromatic target epochs. A smaller second participant dataset, denoted Sub2, contains 350 chromatic target epochs and is used as a small-sample participant panel.
 
-The package provides reported aggregate values, per-seed fixed-split rows, figures, split/seed metadata, fixed-split train/validation/test assignments, selected fixed-split predictions, run-level DeepConvNet comparisons, Sub2 paired deltas, per-class decodability profiles, channel-scope comparisons, and fold/session summaries described in the manuscript. Model training is covered by the separate code-release route.
+The package provides reported aggregate values, per-seed fixed-split rows, figures, split/seed metadata, fixed-split train/validation/test assignments, selected fixed-split predictions, run-level DeepConvNet comparisons, Sub2 paired deltas, per-class decodability profiles, channel-scope comparisons, and fold/session summaries described in the manuscript.
 
-This anonymous release omits raw EEG, participant-identifying records, ethics documents, and machine-specific records. A separate anonymized code repository will provide permitted preprocessing, training, and evaluation code. After acceptance, de-identified data or controlled access will be provided within consent scope and institutional policy. This release also includes a model-configuration table and explicit terms for the included materials.
+This anonymous release omits raw EEG, participant-identifying records, ethics documents, full preprocessing/training/evaluation runners, and machine-specific records. After acceptance, de-identified data or controlled access will be provided within consent scope and institutional policy, and runnable experiment code will be released where permitted. This release also includes a model-configuration table and explicit terms for the included materials.
 
 ## Reporting Conventions
 

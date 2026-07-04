@@ -12,7 +12,7 @@ python scripts/validate_public_artifact.py --root .
 
 ## Code Release Boundary
 
-The anonymous materials include validation code, table-consistency checks, configuration values, and manuscript figure PDFs suitable for checking the reported aggregate values. A separate anonymized code repository will provide preprocessing, training, evaluation, and figure-generation source code with local paths and identifiers removed. The model-configuration values needed to interpret the reported experiments are included in `metadata/model_configuration_public.csv`.
+The anonymous materials include validation code, table-consistency checks, configuration values, figure sources, and manuscript figure PDFs suitable for checking the reported aggregate values. Full preprocessing, training, evaluation, and raw-export plotting runners are outside this anonymous result-checking package and will be released with local paths and identifiers removed where permitted. The model-configuration values needed to interpret the reported experiments are included in `metadata/model_configuration_public.csv`.
 
 ## Data Access Boundary
 
@@ -24,7 +24,7 @@ Expected access classes are:
 - Available after acceptance when permitted: de-identified raw or minimally processed EEG needed to rerun preprocessing and training, distributed through a public release or controlled-access route subject to consent scope, institutional review, and any required data-use agreement.
 - Not released by this package: consent forms, ethics-board records, participant-identifying records, acquisition notes, and machine-specific records.
 
-If raw EEG access cannot be granted, the derived result tables, fixed-split sample/prediction summaries, DeepConvNet paired-run tables, per-class decodability profiles, fold/session block summaries, and runnable code can still support checking the reported aggregate values and rerunning the analysis on permitted data.
+If raw EEG access cannot be granted, the derived result tables, fixed-split sample/prediction summaries, DeepConvNet paired-run tables, per-class decodability profiles, fold/session block summaries, and validation code can still support checking the reported aggregate values and rerunning the analysis on permitted data.
 
 ## License
 

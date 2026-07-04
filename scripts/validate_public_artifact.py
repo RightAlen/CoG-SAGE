@@ -35,7 +35,7 @@ EXPECTED_COUNTS = {
     "tables/main_results_public.csv": 12,
     "tables/ablation_public.csv": 10,
     "tables/additional_controls_public.csv": 6,
-    "tables/color_neighborhood_error_public.csv": 2,
+    "tables/color_neighborhood_error_public.csv": 4,
     "tables/sub2_seed_runs_public.csv": 30,
     "tables/sub2_paired_deltas_public.csv": 25,
     "tables/subject_decodability_per_class_public.csv": 7,
@@ -926,7 +926,7 @@ def check_public_values(root: Path, errors: list[str]) -> dict[str, object]:
     component = read_csv(root / "tables/component_paired_evidence_public.csv")
     comp_hsv = find_row(component, "variant", "w/o HSV prototype logits")
     comp_adjacent = find_row(component, "variant", "w/o gated adjacent class query")
-    comp_structured = find_row(component, "variant", "w/o structured-color terms")
+    comp_ordered = find_row(component, "variant", "w/o ordered-label terms")
     comp_contrastive = find_row(component, "variant", "w/o color-contrastive loss")
     comp_ema = find_row(component, "variant", "w/o EMA/checkpoint averaging")
     comp_car = find_row(component, "variant", "no CAR front-end")
@@ -944,14 +944,14 @@ def check_public_values(root: Path, errors: list[str]) -> dict[str, object]:
     )
     require_close(
         errors,
-        "component structured-color accuracy delta pp",
-        comp_structured["full_minus_variant_accuracy_delta_pp_mean"],
+        "component ordered-label accuracy delta pp",
+        comp_ordered["full_minus_variant_accuracy_delta_pp_mean"],
         0.8475,
     )
     require_close(
         errors,
-        "component structured-color circular-distance delta",
-        comp_structured["full_minus_variant_circular_distance_delta_mean"],
+        "component ordered-label circular-distance delta",
+        comp_ordered["full_minus_variant_circular_distance_delta_mean"],
         -0.0288,
     )
     require_close(
@@ -982,9 +982,13 @@ def check_public_values(root: Path, errors: list[str]) -> dict[str, object]:
         errors.append("component paired evidence contains unmatched rows")
 
     color = read_csv(root / "tables/color_neighborhood_error_public.csv")
-    color_prop = find_row(color, "method", "Proposed model")
+    color_prop = find_row(color, "method", "CoG-SAGE")
+    color_no_order = find_row(color, "method", "w/o ordered-label terms")
+    color_deep_stab = find_row(color, "method", "DeepConvNet-CE + stabilization")
     require_close(errors, "color non-adjacent error", color_prop["observed_nonadjacent_error_mean"], 0.2758)
     require_close(errors, "color circular distance", color_prop["observed_mean_circular_distance"], 0.8924)
+    require_close(errors, "w/o ordered-label circular distance", color_no_order["observed_mean_circular_distance"], 0.9212)
+    require_close(errors, "stabilized DeepConvNet circular distance", color_deep_stab["observed_mean_circular_distance"], 1.0301)
 
     controls = read_csv(root / "tables/additional_controls_public.csv")
     prior = find_row(controls, "control_family", "Train class prior scores")

@@ -1,6 +1,6 @@
-# Anonymous Code Release For Color-Evoked EEG Decoding
+# Anonymous Result-Checking Materials For Color-Evoked EEG Decoding
 
-This directory is a GitHub-ready anonymous release bundle for the BIBM submission. It mirrors the public result-checking materials and includes scripts that can be shared without raw EEG files, machine-specific records, participant identifiers, or training records that could compromise anonymity.
+This repository mirrors the anonymous result-checking materials for the BIBM submission. It provides derived tables, figure sources, split/seed metadata, configuration summaries, and validation scripts that can be shared without raw EEG files, machine-specific records, participant identifiers, or training records that could compromise anonymity.
 
 ## Contents
 
@@ -8,7 +8,7 @@ This directory is a GitHub-ready anonymous release bundle for the BIBM submissio
 - `scripts/validate_public_artifact.py`: standalone checker for included files, row counts, CSV schemas, fixed-split role counts, fixed-split seed-run recomputation, Sub2 paired deltas, DeepConvNet paired comparisons, and selected manuscript values.
 - `scripts/draw_paradigm_timeline.py`: source for the paradigm timeline figure.
 - `scripts/draw_overall_framework.py`: source for the framework figure.
-- `scripts/plot_model_decision_attribution.py`: source for the decision/attribution figure when seed-aligned export files are available.
+- `scripts/plot_model_decision_attribution.py`: reference source for the decision/attribution figure; the seed-aligned export files needed to rerun this plot are not included in the anonymous package.
 - `configs/reported_model_config.json`: public configuration values for the reported model.
 - `LICENSE.md`: release terms for included code and generated materials.
 
@@ -31,14 +31,10 @@ python scripts/draw_overall_framework.py
 
 Generated files are written to `generated_figures/`.
 
-The Fig. 3 plotting script requires seed-aligned export files and is included for transparency; the raw export files are not part of the anonymous package.
+The Fig. 3 plotting script is included as reference source. It is not part of the quick-check path because the seed-aligned export files used to generate the published figure are not included in this anonymous package.
 
 ## Scope
 
 This anonymous release supports result checking and figure/source inspection. It does not include raw EEG recordings, consent documents, ethics records, participant-identifying records, or non-release development records.
 
-Preprocessing, training, and evaluation source code will be provided with anonymized paths and identifiers. After acceptance, the final release will provide a de-identified data release or controlled-access route when permitted by written consent and institutional permissions.
-
-## Suggested Anonymous GitHub Layout
-
-The contents of this directory can be pushed as the repository root. Keep the repository anonymous during review: do not add author names, institutional identifiers, machine-specific records, or non-anonymous contact details.
+Full preprocessing, training, and evaluation runners are outside the anonymous result-checking scope and will be released with anonymized paths and identifiers where permitted. After acceptance, the final release will provide a de-identified data release or controlled-access route when allowed by written consent and institutional permissions.
