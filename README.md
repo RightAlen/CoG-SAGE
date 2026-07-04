@@ -1,6 +1,6 @@
 # Anonymous Materials For Color-Evoked EEG Decoding
 
-This repository mirrors the reviewer-facing result-checking materials for the BIBM submission. It provides derived tables, figure sources, split/seed metadata, configuration summaries, and validation scripts that can be shared without raw EEG files, machine-specific records, participant identifiers, or training records that could compromise anonymity.
+This repository mirrors the reviewer-facing result-checking materials for the BIBM submission. It provides derived tables, figure PDFs, selected plotting sources, split/seed metadata, configuration summaries, and validation scripts that can be shared without raw EEG files, machine-specific records, participant identifiers, or training records that could compromise anonymity.
 
 ## Contents
 
@@ -35,6 +35,6 @@ The Fig. 3 plotting script is included as reference source. It is not part of th
 
 ## Scope
 
-This anonymous release supports inspection of the reported aggregate values, table sources, and figure sources. It does not include raw EEG recordings, consent documents, ethics records, participant-identifying records, or non-release development records.
+This anonymous release supports inspection of the reported aggregate values, table sources, figure PDFs, and selected plotting sources. It does not include raw EEG recordings, consent documents, ethics records, participant-identifying records, or non-release development records.
 
-Full preprocessing, training, and evaluation runners are outside this anonymous result-checking package because they depend on non-public raw-data paths and acquisition records. Post-acceptance release will remove identifying details where permitted, and raw-data access will follow written consent and institutional permissions.
+Full preprocessing, training, and evaluation runners are outside this anonymous result-checking package because they depend on non-public raw-data paths and acquisition records. Any later code or raw-data access is subject to de-identification, written consent, and institutional permissions.

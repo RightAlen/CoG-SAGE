@@ -23,7 +23,7 @@ This anonymous release omits raw EEG, participant-identifying records, ethics do
 
 - Accuracy and top-2 values are stored as proportions unless the column name ends with `_percent`.
 - Standard deviations are sample standard deviations across the runs stated in each row.
-- Sub2 rows form a small-sample feasibility and class-profile analysis; larger matched cohorts are required before population-level claims.
+- Sub2 rows form a small second-participant descriptive profile; larger matched cohorts are required before population-level claims.
 - Per-class decodability values describe model performance by class, not subjective color preference.
 - Fixed-split seed rows recompute the five-seed means and sample standard deviations in the main result table.
 - Fixed-split assignment rows identify the train, validation, and held-out test role for each anonymized sample index.

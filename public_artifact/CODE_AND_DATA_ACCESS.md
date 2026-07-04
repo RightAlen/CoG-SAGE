@@ -12,7 +12,7 @@ python scripts/validate_public_artifact.py --root .
 
 ## Code Release Boundary
 
-The anonymous materials include validation code, released-table summaries, configuration values, figure sources, and manuscript figure PDFs suitable for checking the reported aggregate values. Full preprocessing, training, evaluation, and raw-export plotting runners are outside this anonymous result-checking package because they depend on non-public raw-data paths and acquisition records. Post-acceptance code release will remove identifying details where permitted. The model-configuration values needed to interpret the reported experiments are included in `metadata/model_configuration_public.csv`.
+The anonymous materials include validation code, released-table summaries, configuration values, selected plotting sources, and manuscript figure PDFs suitable for checking the reported aggregate values. Full preprocessing, training, evaluation, and raw-export plotting runners are outside this anonymous result-checking package because they depend on non-public raw-data paths and acquisition records. Any later code release is subject to removing identifying details where permitted. The model-configuration values needed to interpret the reported experiments are included in `metadata/model_configuration_public.csv`.
 
 ## Data Access Boundary
 
