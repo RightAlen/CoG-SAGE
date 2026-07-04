@@ -43,6 +43,8 @@ EXPECTED_COUNTS = {
     "tables/window_sensitivity_public.csv": 3,
     "tables/deepconvnet_paired_evidence_public.csv": 6,
     "tables/deepconvnet_fixedsplit_mcnemar_public.csv": 6,
+    "tables/deepconvnet_stabilized_fixedsplit_mcnemar_public.csv": 6,
+    "tables/deepconvnet_stabilized_fixedsplit_test_predictions_public.csv": 2360,
     "tables/deepconvnet_session_stratified_5fold_paired_runs_public.csv": 25,
     "tables/deepconvnet_loso_paired_runs_public.csv": 20,
     "tables/deepconvnet_stabilized_session_stratified_5fold_paired_runs_public.csv": 25,
@@ -77,6 +79,8 @@ EXPECTED_HEADERS = {
     "tables/component_paired_evidence_public.csv": csv_header("variant,component_tested,paired_seeds,matched_test_labels_and_indices,full_minus_variant_accuracy_delta_pp_mean,full_minus_variant_accuracy_delta_pp_sd,full_minus_variant_accuracy_delta_pp_ci95,accuracy_positive_seeds,accuracy_negative_seeds,accuracy_tied_seeds,accuracy_sign_p,full_minus_variant_kappa_delta_mean,full_minus_variant_kappa_delta_sd,full_minus_variant_kappa_delta_ci95,full_minus_variant_top2_delta_pp_mean,full_minus_variant_top2_delta_pp_sd,full_minus_variant_top2_delta_pp_ci95,full_minus_variant_nonadjacent_error_delta_pp_mean,full_minus_variant_nonadjacent_error_delta_pp_sd,full_minus_variant_nonadjacent_error_delta_pp_ci95,full_minus_variant_circular_distance_delta_mean,full_minus_variant_circular_distance_delta_sd,full_minus_variant_circular_distance_delta_ci95,interpretation"),
     "tables/window_sensitivity_public.csv": csv_header("window,seed_count,accuracy_mean,accuracy_sd,kappa_mean,kappa_sd,top2_mean,top2_sd"),
     "tables/deepconvnet_fixedsplit_mcnemar_public.csv": csv_header("comparison,seed,n_trials,proposed_correct_deepconvnet_wrong,proposed_wrong_deepconvnet_correct,accuracy_delta,mcnemar_exact_p,scope"),
+    "tables/deepconvnet_stabilized_fixedsplit_mcnemar_public.csv": csv_header("comparison,seed,n_trials,proposed_correct_deepconvnet_wrong,proposed_wrong_deepconvnet_correct,accuracy_delta,mcnemar_exact_p,scope"),
+    "tables/deepconvnet_stabilized_fixedsplit_test_predictions_public.csv": csv_header("seed,sample_idx,session_index,epoch_idx,raw_label,label,label_name,proposed_prediction,proposed_prediction_name,deepconvnet_stabilized_prediction,deepconvnet_stabilized_prediction_name,proposed_correct,deepconvnet_stabilized_correct"),
     "tables/deepconvnet_loso_paired_runs_public.csv": csv_header("protocol,heldout_session_index,seed,proposed_accuracy,deepconvnet_accuracy,accuracy_delta,proposed_kappa,deepconvnet_kappa,kappa_delta,proposed_top2,deepconvnet_top2,top2_delta"),
     "tables/deepconvnet_paired_evidence_public.csv": csv_header("comparison,scope,units,positive_count,negative_count,tie_count,accuracy_delta_pp,exact_p,interpretation"),
     "tables/deepconvnet_session_stratified_5fold_paired_runs_public.csv": csv_header("protocol,fold_index,seed,proposed_accuracy,deepconvnet_accuracy,accuracy_delta,proposed_kappa,deepconvnet_kappa,kappa_delta,proposed_top2,deepconvnet_top2,top2_delta"),
@@ -248,6 +252,24 @@ NUMERIC_FIELDS = {
         "proposed_wrong_deepconvnet_correct",
         "accuracy_delta",
         "mcnemar_exact_p",
+    ],
+    "tables/deepconvnet_stabilized_fixedsplit_mcnemar_public.csv": [
+        "n_trials",
+        "proposed_correct_deepconvnet_wrong",
+        "proposed_wrong_deepconvnet_correct",
+        "accuracy_delta",
+        "mcnemar_exact_p",
+    ],
+    "tables/deepconvnet_stabilized_fixedsplit_test_predictions_public.csv": [
+        "seed",
+        "sample_idx",
+        "session_index",
+        "epoch_idx",
+        "label",
+        "proposed_prediction",
+        "deepconvnet_stabilized_prediction",
+        "proposed_correct",
+        "deepconvnet_stabilized_correct",
     ],
     "tables/deepconvnet_loso_paired_runs_public.csv": [
         "heldout_session_index",
@@ -501,31 +523,90 @@ def require_close(
 def check_deepconvnet_pairs(root: Path, errors: list[str]) -> dict[str, object]:
     summary = read_csv(root / "tables/deepconvnet_paired_evidence_public.csv")
     fixed_mcnemar = read_csv(root / "tables/deepconvnet_fixedsplit_mcnemar_public.csv")
+    fixed_stabilized_mcnemar = read_csv(root / "tables/deepconvnet_stabilized_fixedsplit_mcnemar_public.csv")
+    fixed_stabilized_predictions = read_csv(root / "tables/deepconvnet_stabilized_fixedsplit_test_predictions_public.csv")
+    manifest = read_csv(root / "metadata/fixed_split_sample_manifest_public.csv")
     fivefold = read_csv(root / "tables/deepconvnet_session_stratified_5fold_paired_runs_public.csv")
     loso = read_csv(root / "tables/deepconvnet_loso_paired_runs_public.csv")
 
-    per_seed_rows = [row for row in fixed_mcnemar if row["scope"] == "per_seed"]
-    pooled_rows = [row for row in fixed_mcnemar if row["scope"] == "pooled_seed_trial_pairs_summary"]
-    if len(per_seed_rows) != 5:
-        errors.append(f"fixed-split McNemar has {len(per_seed_rows)} per-seed rows; expected 5")
-    if len(pooled_rows) != 1:
-        errors.append(f"fixed-split McNemar has {len(pooled_rows)} pooled rows; expected 1")
-    for row in per_seed_rows:
-        delta = float(row["accuracy_delta"])
-        wins = int(row["proposed_correct_deepconvnet_wrong"])
-        losses = int(row["proposed_wrong_deepconvnet_correct"])
-        if delta <= 0 or wins <= losses:
-            errors.append(f"fixed-split McNemar seed {row['seed']} does not favor the proposed model")
-    if pooled_rows:
-        require_close(errors, "fixed-split McNemar pooled delta", pooled_rows[0]["accuracy_delta"], 0.077119)
-        require_close(errors, "fixed-split McNemar pooled trials", pooled_rows[0]["n_trials"], 2360, tolerance=0)
-
-    results = {
-        "fixed_split_mcnemar": {
-            "rows": len(fixed_mcnemar),
+    def check_mcnemar_table(
+        rows: list[dict[str, str]],
+        name: str,
+        expected_pooled_delta: float,
+    ) -> dict[str, object]:
+        per_seed_rows = [row for row in rows if row["scope"] == "per_seed"]
+        pooled_rows = [row for row in rows if row["scope"] == "pooled_seed_trial_pairs_summary"]
+        if len(per_seed_rows) != 5:
+            errors.append(f"{name} McNemar has {len(per_seed_rows)} per-seed rows; expected 5")
+        if len(pooled_rows) != 1:
+            errors.append(f"{name} McNemar has {len(pooled_rows)} pooled rows; expected 1")
+        for row in per_seed_rows:
+            delta = float(row["accuracy_delta"])
+            wins = int(row["proposed_correct_deepconvnet_wrong"])
+            losses = int(row["proposed_wrong_deepconvnet_correct"])
+            if delta <= 0 or wins <= losses:
+                errors.append(f"{name} McNemar seed {row['seed']} does not favor the proposed model")
+        if pooled_rows:
+            require_close(errors, f"{name} McNemar pooled delta", pooled_rows[0]["accuracy_delta"], expected_pooled_delta)
+            require_close(errors, f"{name} McNemar pooled trials", pooled_rows[0]["n_trials"], 2360, tolerance=0)
+        return {
+            "rows": len(rows),
             "per_seed_rows": len(per_seed_rows),
             "pooled_accuracy_delta": float(pooled_rows[0]["accuracy_delta"]) if pooled_rows else None,
         }
+
+    fixed_summary = check_mcnemar_table(fixed_mcnemar, "fixed-split", 0.077119)
+    fixed_stabilized_summary = check_mcnemar_table(
+        fixed_stabilized_mcnemar,
+        "fixed-split stabilized",
+        0.064407,
+    )
+
+    manifest_by_id = {row["sample_idx"]: row for row in manifest}
+    stabilized_by_seed: dict[str, list[dict[str, str]]] = {}
+    for row in fixed_stabilized_predictions:
+        stabilized_by_seed.setdefault(row["seed"], []).append(row)
+        if row["sample_idx"] not in manifest_by_id:
+            errors.append(f"stabilized fixed-split prediction sample {row['sample_idx']} is missing from manifest")
+            continue
+        manifest_row = manifest_by_id[row["sample_idx"]]
+        for field in ["session_index", "epoch_idx", "raw_label", "label", "label_name"]:
+            if row[field] != manifest_row[field]:
+                errors.append(
+                    f"stabilized fixed-split prediction metadata mismatch for sample "
+                    f"{row['sample_idx']} field {field}"
+                )
+                break
+    mcnemar_by_seed = {
+        row["seed"]: row
+        for row in fixed_stabilized_mcnemar
+        if row["scope"] == "per_seed"
+    }
+    for seed, rows in stabilized_by_seed.items():
+        if len(rows) != 472:
+            errors.append(f"stabilized fixed-split seed {seed} has {len(rows)} prediction rows; expected 472")
+        if seed not in mcnemar_by_seed:
+            errors.append(f"stabilized fixed-split seed {seed} lacks a McNemar row")
+            continue
+        proposed_correct = [int(row["proposed_correct"]) for row in rows]
+        deep_correct = [int(row["deepconvnet_stabilized_correct"]) for row in rows]
+        wins = sum(1 for p, d in zip(proposed_correct, deep_correct) if p == 1 and d == 0)
+        losses = sum(1 for p, d in zip(proposed_correct, deep_correct) if p == 0 and d == 1)
+        delta = mean([p - d for p, d in zip(proposed_correct, deep_correct)])
+        summary_row = mcnemar_by_seed[seed]
+        if wins != int(summary_row["proposed_correct_deepconvnet_wrong"]):
+            errors.append(f"stabilized fixed-split seed {seed} proposed-win count mismatch")
+        if losses != int(summary_row["proposed_wrong_deepconvnet_correct"]):
+            errors.append(f"stabilized fixed-split seed {seed} proposed-loss count mismatch")
+        require_close(errors, f"stabilized fixed-split seed {seed} accuracy delta", delta, float(summary_row["accuracy_delta"]))
+
+    results = {
+        "fixed_split_mcnemar": fixed_summary,
+        "fixed_split_stabilized_mcnemar": fixed_stabilized_summary,
+        "fixed_split_stabilized_predictions": {
+            "rows": len(fixed_stabilized_predictions),
+            "seeds": sorted(stabilized_by_seed),
+        },
     }
     for name, rows, token, block_field, expected_blocks, block_sign_p in [
         ("session_stratified_5fold", fivefold, "fivefold", "fold_index", 5, 0.0625),

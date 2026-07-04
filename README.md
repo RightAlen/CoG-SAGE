@@ -1,11 +1,11 @@
 # Anonymous Materials For Color-Evoked EEG Decoding
 
-This repository mirrors the reviewer-facing result-checking materials for the BIBM submission. It provides derived tables, figure PDFs, selected plotting sources, split/seed metadata, configuration summaries, and validation scripts that can be shared without raw EEG files, machine-specific records, participant identifiers, or training records that could compromise anonymity.
+This repository contains anonymous public materials accompanying the BIBM submission. It provides derived tables, figure PDFs, selected plotting sources, split/seed metadata, configuration summaries, and validation scripts that can be shared without raw EEG files, machine-specific records, participant identifiers, or training records that could compromise anonymity.
 
 ## Contents
 
 - `public_artifact/`: public tables, figures, split/seed metadata, split-role assignments, validation code, and access notes used by the manuscript.
-- `scripts/validate_public_artifact.py`: standalone validation script for included files, row counts, CSV schemas, fixed-split role counts, fixed-split seed-run recomputation, Sub2 paired deltas, DeepConvNet paired comparisons, stimulus diagnostics, and selected manuscript values.
+- `scripts/validate_public_artifact.py`: standalone validation script for included files, row counts, CSV schemas, fixed-split role counts, fixed-split seed-run recomputation, Sub2 paired deltas, DeepConvNet paired comparisons, stabilized fixed-split prediction checks, stimulus diagnostics, and selected manuscript values.
 - `scripts/draw_paradigm_timeline.py`: source for the paradigm timeline figure.
 - `scripts/draw_overall_framework.py`: source for the framework figure.
 - `scripts/plot_model_decision_attribution.py`: reference source for the decision/attribution figure; the seed-aligned export files needed to rerun this plot are not included in the anonymous package.
@@ -35,6 +35,6 @@ The Fig. 3 plotting script is included as reference source. It is not part of th
 
 ## Scope
 
-This anonymous release supports inspection of the reported aggregate values, table sources, figure PDFs, and selected plotting sources. It does not include raw EEG recordings, consent documents, ethics records, participant-identifying records, or non-release development records.
+This anonymous release supports inspection of the reported aggregate values, paired comparison tables, figure PDFs, and selected plotting sources. It does not include raw EEG recordings, consent documents, ethics records, participant-identifying records, or non-release development records.
 
 Full preprocessing, training, and evaluation runners are outside this anonymous result-checking package because they depend on non-public raw-data paths and acquisition records. Any later code or raw-data access is subject to de-identification, written consent, and institutional permissions.

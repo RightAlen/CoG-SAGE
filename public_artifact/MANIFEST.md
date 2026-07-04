@@ -27,6 +27,8 @@ Generated: 2026-06-29
 - `tables/additional_controls_public.csv`
 - `tables/deepconvnet_paired_evidence_public.csv`
 - `tables/deepconvnet_fixedsplit_mcnemar_public.csv`
+- `tables/deepconvnet_stabilized_fixedsplit_mcnemar_public.csv`
+- `tables/deepconvnet_stabilized_fixedsplit_test_predictions_public.csv`
 - `tables/deepconvnet_session_stratified_5fold_paired_runs_public.csv`
 - `tables/deepconvnet_loso_paired_runs_public.csv`
 - `tables/deepconvnet_stabilized_session_stratified_5fold_paired_runs_public.csv`

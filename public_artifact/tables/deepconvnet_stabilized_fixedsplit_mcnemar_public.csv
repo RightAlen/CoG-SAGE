@@ -1,0 +1,7 @@
+comparison,seed,n_trials,proposed_correct_deepconvnet_wrong,proposed_wrong_deepconvnet_correct,accuracy_delta,mcnemar_exact_p,scope
+CoG-SAGE vs DeepConvNet-CE + stabilization,1,472,78,56,0.046610,0.0692596,per_seed
+CoG-SAGE vs DeepConvNet-CE + stabilization,7,472,69,47,0.046610,0.0507296,per_seed
+CoG-SAGE vs DeepConvNet-CE + stabilization,21,472,72,30,0.088983,3.88501e-05,per_seed
+CoG-SAGE vs DeepConvNet-CE + stabilization,42,472,72,40,0.067797,0.00321694,per_seed
+CoG-SAGE vs DeepConvNet-CE + stabilization,97,472,80,46,0.072034,0.00312561,per_seed
+CoG-SAGE vs DeepConvNet-CE + stabilization,pooled,2360,371,219,0.064407,4.09312e-10,pooled_seed_trial_pairs_summary
