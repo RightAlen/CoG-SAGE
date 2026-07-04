@@ -21,7 +21,17 @@ PUBLIC_TEXT_PATTERNS = [
     ("home-directory path", re.compile(r"[\\/][Uu]sers[\\/]")),
 ]
 
+PUBLIC_BYTE_PATTERNS = [
+    ("local user path", re.compile(rb"\b[A-Za-z]:[\\/][Uu]sers[\\/]")),
+    ("home-directory path", re.compile(rb"[\\/][Uu]sers[\\/]")),
+]
+
 TEXT_SUFFIXES = {".csv", ".md", ".txt", ".py"}
+PDF_SUFFIXES = {".pdf"}
+PDF_AUTHOR_RE = re.compile(
+    rb"/Author\s*(?:\((?P<literal>(?:\\.|[^\\)])*)\)|<(?P<hex>[0-9A-Fa-f\s]*)>)",
+    re.DOTALL,
+)
 
 
 def csv_header(header: str) -> list[str]:
@@ -387,6 +397,30 @@ def read_csv(path: Path) -> list[dict[str, str]]:
         return list(csv.DictReader(handle))
 
 
+def decode_pdf_metadata_value(match: re.Match[bytes]) -> str:
+    literal = match.group("literal")
+    hex_value = match.group("hex")
+    if hex_value is not None:
+        try:
+            raw = bytes.fromhex(re.sub(rb"\s+", b"", hex_value).decode("ascii"))
+        except ValueError:
+            return ""
+    elif literal is not None:
+        raw = (
+            literal.replace(rb"\(", b"(")
+            .replace(rb"\)", b")")
+            .replace(rb"\\", b"\\")
+        )
+    else:
+        return ""
+
+    if raw.startswith(b"\xfe\xff"):
+        return raw[2:].decode("utf-16-be", errors="ignore").strip()
+    if raw.startswith(b"\xff\xfe"):
+        return raw[2:].decode("utf-16-le", errors="ignore").strip()
+    return raw.decode("utf-8", errors="ignore").strip()
+
+
 def mean(values: list[float]) -> float:
     if not values:
         raise ValueError("cannot average an empty list")
@@ -436,14 +470,26 @@ def check_manifest(root: Path, errors: list[str]) -> list[str]:
 def check_public_text_hygiene(root: Path, errors: list[str]) -> int:
     scanned = 0
     for path in root.rglob("*"):
-        if not path.is_file() or path.suffix.lower() not in TEXT_SUFFIXES:
+        if not path.is_file():
             continue
-        text = path.read_text(encoding="utf-8", errors="ignore")
         rel = path.relative_to(root).as_posix()
-        scanned += 1
-        for label, regex in PUBLIC_TEXT_PATTERNS:
-            if regex.search(text):
-                errors.append(f"public text hygiene pattern '{label}' found in {rel}")
+        suffix = path.suffix.lower()
+        if suffix in TEXT_SUFFIXES:
+            text = path.read_text(encoding="utf-8", errors="ignore")
+            scanned += 1
+            for label, regex in PUBLIC_TEXT_PATTERNS:
+                if regex.search(text):
+                    errors.append(f"public text hygiene pattern '{label}' found in {rel}")
+        elif suffix in PDF_SUFFIXES:
+            data = path.read_bytes()
+            scanned += 1
+            for label, regex in PUBLIC_BYTE_PATTERNS:
+                if regex.search(data):
+                    errors.append(f"public PDF hygiene pattern '{label}' found in {rel}")
+            for match in PDF_AUTHOR_RE.finditer(data):
+                author = decode_pdf_metadata_value(match)
+                if author and "anonymous" not in author.lower():
+                    errors.append(f"non-anonymous PDF Author metadata in {rel}: {author!r}")
     return scanned
 
 

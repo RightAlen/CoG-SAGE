@@ -9,6 +9,7 @@
 - `scripts/validate_public_artifact.py`
 - `scripts/draw_paradigm_timeline.py`
 - `scripts/draw_overall_framework.py`
+- `scripts/plot_model_decision_attribution.py`
 - `public_artifact/README.md`
 - `public_artifact/MANIFEST.md`
 - `public_artifact/CODE_AND_DATA_ACCESS.md`

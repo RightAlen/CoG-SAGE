@@ -37,4 +37,4 @@ The Fig. 3 plotting script is included as reference source. It is not part of th
 
 This anonymous release supports inspection of the reported aggregate values, paired comparison tables, figure PDFs, and selected plotting sources. It does not include raw EEG recordings, consent documents, ethics records, participant-identifying records, or non-release development records.
 
-Full preprocessing, training, and evaluation runners are outside this anonymous result-checking package because they depend on non-public raw-data paths and acquisition records. Any later code or raw-data access is subject to de-identification, written consent, and institutional permissions.
+Full preprocessing, training, and evaluation runners are outside this anonymous materials package because they depend on non-public raw-data paths and acquisition records. Additional runner or raw-data access requires de-identification, consent scope, and institutional permission.

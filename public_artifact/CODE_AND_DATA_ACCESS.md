@@ -12,11 +12,11 @@ python scripts/validate_public_artifact.py --root .
 
 ## Code Release Boundary
 
-The anonymous materials include validation code, released-table summaries, configuration values, selected plotting sources, and manuscript figure PDFs suitable for checking the reported aggregate values and paired fixed-split comparisons. Full preprocessing, training, evaluation, and raw-export plotting runners are outside this anonymous result-checking package because they depend on non-public raw-data paths and acquisition records. Any later code release is subject to removing identifying details where permitted. The model-configuration values needed to interpret the reported experiments are included in `metadata/model_configuration_public.csv`.
+The anonymous materials include validation code, released-table summaries, configuration values, selected plotting sources, and manuscript figure PDFs suitable for checking the reported aggregate values and paired fixed-split comparisons. Full preprocessing, training, evaluation, and raw-export plotting runners are outside this anonymous package because they depend on non-public raw-data paths and acquisition records. Additional runner access requires removing identifying details where permitted. The model-configuration values needed to interpret the reported experiments are included in `metadata/model_configuration_public.csv`.
 
 ## Data Access Boundary
 
-Raw EEG recordings are not included in this anonymous package. Access to raw recordings is subject to informed consent and institutional permissions. Post-acceptance data access will use either a de-identified release or a controlled-access route within the consent scope and institutional permissions.
+Raw EEG recordings are not included in this anonymous package. Access to raw recordings is subject to informed consent and institutional permissions. Data access would use either a de-identified release or a controlled-access route within the consent scope and institutional permissions.
 
 Expected access classes are:
 
