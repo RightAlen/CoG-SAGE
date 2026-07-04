@@ -12,11 +12,11 @@ python scripts/validate_public_artifact.py --root .
 
 ## Code Release Boundary
 
-The anonymous materials include validation code, released-table summaries, configuration values, figure sources, and manuscript figure PDFs suitable for checking the reported aggregate values. Full preprocessing, training, evaluation, and raw-export plotting runners are outside this anonymous result-checking package because they depend on non-public raw-data paths and acquisition records; release after acceptance will remove identifying details where permitted. The model-configuration values needed to interpret the reported experiments are included in `metadata/model_configuration_public.csv`.
+The anonymous materials include validation code, released-table summaries, configuration values, figure sources, and manuscript figure PDFs suitable for checking the reported aggregate values. Full preprocessing, training, evaluation, and raw-export plotting runners are outside this anonymous result-checking package because they depend on non-public raw-data paths and acquisition records. Post-acceptance code release will remove identifying details where permitted. The model-configuration values needed to interpret the reported experiments are included in `metadata/model_configuration_public.csv`.
 
 ## Data Access Boundary
 
-Raw EEG recordings are not included in this anonymous package. Access to raw recordings is subject to informed consent and institutional permissions. After acceptance, the final release will provide a de-identified data release or controlled-access route within the consent scope and institutional permissions.
+Raw EEG recordings are not included in this anonymous package. Access to raw recordings is subject to informed consent and institutional permissions. Post-acceptance data access will use either a de-identified release or a controlled-access route within the consent scope and institutional permissions.
 
 Expected access classes are:
 
