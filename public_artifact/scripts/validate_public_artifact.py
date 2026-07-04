@@ -33,13 +33,13 @@ EXPECTED_COUNTS = {
     "metadata/splits_and_seeds.csv": 5,
     "tables/fixed_split_seed_runs_public.csv": 50,
     "tables/main_results_public.csv": 12,
-    "tables/ablation_public.csv": 10,
+    "tables/ablation_public.csv": 11,
     "tables/additional_controls_public.csv": 6,
     "tables/color_neighborhood_error_public.csv": 4,
     "tables/sub2_seed_runs_public.csv": 30,
     "tables/sub2_paired_deltas_public.csv": 25,
     "tables/subject_decodability_per_class_public.csv": 7,
-    "tables/component_paired_evidence_public.csv": 9,
+    "tables/component_paired_evidence_public.csv": 10,
     "tables/window_sensitivity_public.csv": 3,
     "tables/deepconvnet_paired_evidence_public.csv": 6,
     "tables/deepconvnet_fixedsplit_mcnemar_public.csv": 6,
@@ -56,6 +56,9 @@ EXPECTED_COUNTS = {
     "metadata/fixed_split_sample_manifest_public.csv": 2359,
     "metadata/fixed_split_assignments_public.csv": 2359,
     "tables/fixed_split_test_predictions_public.csv": 472,
+    "tables/stimulus_bias_class_metrics_public.csv": 7,
+    "tables/stimulus_bias_confusion_profile_public.csv": 49,
+    "tables/stimulus_bias_correlations_public.csv": 9,
 }
 
 EXPECTED_HEADERS = {
@@ -81,6 +84,9 @@ EXPECTED_HEADERS = {
     "tables/deepconvnet_stabilized_loso_paired_runs_public.csv": csv_header("protocol,heldout_session_index,seed,proposed_accuracy,deepconvnet_stabilized_accuracy,accuracy_delta,proposed_kappa,deepconvnet_stabilized_kappa,kappa_delta,proposed_top2,deepconvnet_stabilized_top2,top2_delta"),
     "tables/fixed_split_seed_runs_public.csv": csv_header("method,role,seed,split_seed,val_seed,selection_split,train_samples,validation_samples,test_samples,accuracy,kappa,top2,selection_rule"),
     "tables/fixed_split_test_predictions_public.csv": csv_header("sample_idx,session_index,epoch_idx,raw_label,label,label_name,probability_mean_prediction,hard_vote_prediction"),
+    "tables/stimulus_bias_class_metrics_public.csv": csv_header("class_index,class_name,support,predicted_as_count,probability_mean_recall,probability_mean_precision,probability_mean_f1,hard_vote_recall,hsv_h_deg,hsv_s,hsv_v,relative_luminance_srgb"),
+    "tables/stimulus_bias_confusion_profile_public.csv": csv_header("true_class,predicted_class,count,row_rate,is_correct,ring_distance,hue_distance_deg,abs_yrel_diff,abs_value_diff,abs_saturation_diff"),
+    "tables/stimulus_bias_correlations_public.csv": csv_header("analysis,n,unit,pearson_r,spearman_r,notes"),
     "tables/main_results_public.csv": csv_header("method,role,runs,accuracy_mean,accuracy_sd,kappa_mean,kappa_sd,top2_mean,top2_sd,notes"),
     "tables/model_feature_attribution_summary_public.csv": csv_header("metric,value,unit,notes"),
     "tables/robustness_public.csv": csv_header("protocol,method,role,runs,accuracy_mean_percent,accuracy_sd_percent,top2_mean_percent,top2_sd_percent,paired_delta_accuracy_vs_deepconvnet_pp,paired_sign_summary,exact_sign_p,notes"),
@@ -920,8 +926,10 @@ def check_public_values(root: Path, errors: list[str]) -> dict[str, object]:
     ablation = read_csv(root / "tables/ablation_public.csv")
     full = find_row(ablation, "variant", "Full proposed model")
     no_ema = find_row(ablation, "variant", "w/o EMA/checkpoint averaging")
+    no_session_cov = find_row(ablation, "variant", "w/o session/covariance branch")
     require_close(errors, "ablation full accuracy", full["accuracy_mean"], 0.5305)
     require_close(errors, "ablation no-EMA accuracy", no_ema["accuracy_mean"], 0.5089)
+    require_close(errors, "ablation no-session-cov accuracy", no_session_cov["accuracy_mean"], 0.5178)
 
     component = read_csv(root / "tables/component_paired_evidence_public.csv")
     comp_hsv = find_row(component, "variant", "w/o HSV prototype logits")
@@ -929,6 +937,7 @@ def check_public_values(root: Path, errors: list[str]) -> dict[str, object]:
     comp_ordered = find_row(component, "variant", "w/o ordered-label terms")
     comp_contrastive = find_row(component, "variant", "w/o color-contrastive loss")
     comp_ema = find_row(component, "variant", "w/o EMA/checkpoint averaging")
+    comp_session_cov = find_row(component, "variant", "w/o session/covariance branch")
     comp_car = find_row(component, "variant", "no CAR front-end")
     require_close(
         errors,
@@ -968,6 +977,12 @@ def check_public_values(root: Path, errors: list[str]) -> dict[str, object]:
     )
     require_close(
         errors,
+        "component session-covariance accuracy delta pp",
+        comp_session_cov["full_minus_variant_accuracy_delta_pp_mean"],
+        1.2712,
+    )
+    require_close(
+        errors,
         "component CAR accuracy delta pp",
         comp_car["full_minus_variant_accuracy_delta_pp_mean"],
         0.8051,
@@ -980,6 +995,12 @@ def check_public_values(root: Path, errors: list[str]) -> dict[str, object]:
     )
     if any(row["matched_test_labels_and_indices"] != "yes" for row in component):
         errors.append("component paired evidence contains unmatched rows")
+
+    stimulus_corr = read_csv(root / "tables/stimulus_bias_correlations_public.csv")
+    recall_yrel = find_row(stimulus_corr, "analysis", "class_recall_vs_yrel")
+    conf_hue = find_row(stimulus_corr, "analysis", "confusion_rate_vs_hue_distance")
+    require_close(errors, "stimulus recall-yrel Pearson r", recall_yrel["pearson_r"], 0.207515)
+    require_close(errors, "stimulus confusion-hue-distance Pearson r", conf_hue["pearson_r"], -0.073621)
 
     color = read_csv(root / "tables/color_neighborhood_error_public.csv")
     color_prop = find_row(color, "method", "CoG-SAGE")
@@ -1036,8 +1057,8 @@ def check_public_values(root: Path, errors: list[str]) -> dict[str, object]:
         "robustness_values_checked": 4,
         "sub2_values_checked": 2,
         "class_decodability_values_checked": 5,
-        "ablation_values_checked": 2,
-        "component_values_checked": 9,
+        "ablation_values_checked": 3,
+        "component_values_checked": 10,
         "color_values_checked": 2,
         "control_values_checked": 2,
         "feature_values_checked": 8,

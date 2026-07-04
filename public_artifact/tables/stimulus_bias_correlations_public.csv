@@ -1,0 +1,10 @@
+analysis,n,unit,pearson_r,spearman_r,notes
+class_recall_vs_yrel,7,7 classes,0.207515,0.630656,Class recall from seed-aligned probability predictions vs sRGB-derived relative luminance.
+class_recall_vs_hsv_value,7,7 classes,0.464179,0.478634,Class recall vs HSV value.
+class_recall_vs_hsv_saturation,7,7 classes,nan,nan,Class recall vs HSV saturation; saturation is constant for these seven classes.
+class_precision_vs_yrel,7,7 classes,0.079268,0.054056,Class precision vs sRGB-derived relative luminance.
+class_recall_vs_hue_sin,7,7 classes,0.149410,0.342356,Linear association with sine component of circular hue.
+class_recall_vs_hue_cos,7,7 classes,0.185535,0.072727,Linear association with cosine component of circular hue.
+confusion_rate_vs_hue_distance,42,42 directed off-diagonal class pairs,-0.073621,0.003837,Off-diagonal row-normalized confusion rate vs circular HSV hue distance.
+confusion_rate_vs_abs_yrel_diff,42,42 directed off-diagonal class pairs,-0.105744,-0.096555,Off-diagonal row-normalized confusion rate vs absolute relative-luminance difference.
+confusion_rate_vs_abs_value_diff,42,42 directed off-diagonal class pairs,-0.135019,-0.120243,Off-diagonal row-normalized confusion rate vs absolute HSV value difference.

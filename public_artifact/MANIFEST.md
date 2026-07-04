@@ -17,6 +17,9 @@ Generated: 2026-06-29
 - `tables/robustness_public.csv`
 - `tables/ablation_public.csv`
 - `tables/component_paired_evidence_public.csv`
+- `tables/stimulus_bias_class_metrics_public.csv`
+- `tables/stimulus_bias_confusion_profile_public.csv`
+- `tables/stimulus_bias_correlations_public.csv`
 - `tables/window_sensitivity_public.csv`
 - `tables/channel_scope_summary_public.csv`
 - `tables/channel_scope_paired_public.csv`
@@ -39,6 +42,7 @@ Generated: 2026-06-29
 - `metadata/closest_prior_matrix_public.csv`
 - `metadata/environment_summary_public.txt`
 - `scripts/validate_public_artifact.py`
+- `scripts/analyze_stimulus_bias_public.py`
 - `figures/figure1_paradigm_timeline.pdf`
 - `figures/figure2_overall_framework.pdf`
 - `figures/figure3_model_feature_attribution.pdf`
