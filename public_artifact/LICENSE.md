@@ -2,13 +2,13 @@
 
 The validation code in `scripts/` is released under the MIT License.
 
-Generated tables, metadata, and manuscript figures in this package are released under the Creative Commons Attribution 4.0 International License. For anonymous submission materials, attribution should be made to the anonymous manuscript authors and package title; after de-anonymization, attribution should be updated to the final author list and public release record.
+Generated tables, metadata, and manuscript figures in this package are released under the Creative Commons Attribution 4.0 International License. Attribution: Yi Wang, Jiaxi Wang, Yongyuan Lin, Tao Ma, and Jianqiang Li; CoG-SAGE: Stable Color-Evoked EEG Decoding, IEEE BIBM 2026; https://github.com/RightAlen/CoG-SAGE.
 
 Raw EEG recordings, consent documents, ethics-board records, and participant-identifying records are not included and are not licensed by this package. Access to raw recordings remains subject to informed consent and institutional permissions.
 
 Third-party works cited by the manuscript, venue templates, and third-party software dependencies remain under their own licenses and terms.
 
-Copyright holder for anonymous-stage materials: anonymous manuscript authors. Later public releases should identify the final copyright holder and public release record.
+Copyright (c) 2026 Yi Wang, Jiaxi Wang, Yongyuan Lin, Tao Ma, and Jianqiang Li.
 
 ## MIT License Text for Included Code
 

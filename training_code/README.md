@@ -1,6 +1,6 @@
-# Minimal Anonymous Training Code
+# Minimal Training Code
 
-This directory contains a compact, anonymous training scaffold for the reported
+This directory contains a compact training scaffold for the reported
 color-evoked EEG decoding setting. It is intended to show the model and baseline
 training path without releasing raw EEG or participant-identifying records.
 
@@ -11,7 +11,7 @@ training path without releasing raw EEG or participant-identifying records.
   - `deepconvnet`: DeepConvNet-style convolutional baseline.
   - `eegnet`: EEGNet-style compact convolutional baseline.
   - `conformer_small`: lightweight convolutional self-attention baseline.
-- `configs/minimal_training_config.json`: anonymous defaults matching the public manuscript setting where possible.
+- `configs/minimal_training_config.json`: path-neutral defaults matching the public manuscript setting where possible.
 
 ## Data Interface
 
@@ -53,6 +53,6 @@ The manuscript numbers are checked from de-identified released summaries:
 python scripts/validate_public_artifact.py --root public_artifact
 ```
 
-Raw EEG and full preprocessing are not part of the anonymous release. Access to
-de-identified raw or minimally processed EEG after acceptance is subject to the
+Raw EEG and full preprocessing are not part of the public release. Access to
+de-identified raw or minimally processed EEG is subject to the
 original consent scope and institutional policy.

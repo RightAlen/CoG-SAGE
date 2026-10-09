@@ -1,4 +1,4 @@
-# Anonymous Release Manifest
+# CoG-SAGE Public Release Manifest
 
 ## Included
 

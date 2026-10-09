@@ -1,6 +1,6 @@
 # BIBM Color-EEG Public Materials Package
 
-This package contains public materials that match the anonymous BIBM manuscript.
+This package contains public materials that accompany the paper accepted at IEEE BIBM 2026.
 
 ## Contents
 
@@ -17,7 +17,7 @@ The primary dataset is an anonymized multi-session participant dataset denoted S
 
 The package provides reported aggregate values, per-seed fixed-split rows, figures, split/seed metadata, fixed-split train/validation/test assignments, selected fixed-split predictions, stabilized DeepConvNet fixed-split paired predictions, run-level DeepConvNet comparisons, Sub2 paired deltas, per-class decodability profiles, stimulus-attribute diagnostics, channel-scope comparisons, and fold/session summaries described in the manuscript.
 
-This anonymous release omits raw EEG, participant-identifying records, ethics documents, full preprocessing/training/evaluation runners, and machine-specific records. The package supports result checking through de-identified tables, split metadata, configurations, figure PDFs, and validation scripts. Additional data or runner access depends on de-identification, consent scope, and institutional policy. This release also includes a model-configuration table and explicit terms for the included materials.
+This release omits raw EEG, participant-identifying records, ethics documents, full preprocessing/training/evaluation runners, and machine-specific records. The package supports result checking through de-identified tables, split metadata, configurations, figure PDFs, and validation scripts. Additional data or runner access depends on de-identification, consent scope, and institutional policy. This release also includes a model-configuration table and explicit terms for the included materials.
 
 ## Reporting Conventions
 

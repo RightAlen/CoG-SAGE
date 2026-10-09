@@ -2,7 +2,7 @@
 
 ## Included Now
 
-This anonymous package includes public result tables, paired-run summaries, per-class decodability profiles, stimulus-attribute diagnostics, fixed-split sample and prediction summaries, stabilized DeepConvNet fixed-split prediction pairs, manuscript figures, split/seed metadata, an environment summary, validation scripts, and anonymous training-code scaffolds in the repository root.
+This public package includes public result tables, paired-run summaries, per-class decodability profiles, stimulus-attribute diagnostics, fixed-split sample and prediction summaries, stabilized DeepConvNet fixed-split prediction pairs, manuscript figures, split/seed metadata, an environment summary, validation scripts, and minimal training-code scaffolds in the repository root.
 
 Run the consistency check from this directory:
 
@@ -12,16 +12,16 @@ python scripts/validate_public_artifact.py --root .
 
 ## Code Release Boundary
 
-The anonymous materials include validation code, released-table summaries, configuration values, selected plotting sources, manuscript figure PDFs, and a path-neutral training scaffold suitable for inspecting the proposed and baseline model families. Full preprocessing and raw-export plotting runners are outside this anonymous package because they depend on non-public raw-data paths and acquisition records. Additional runner access requires removing identifying details where permitted. The model-configuration values needed to interpret the reported experiments are included in `metadata/model_configuration_public.csv`.
+The public materials include validation code, released-table summaries, configuration values, selected plotting sources, manuscript figure PDFs, and a path-neutral training scaffold suitable for inspecting the proposed and baseline model families. Full preprocessing and raw-export plotting runners are outside this public package because they depend on non-public raw-data paths and acquisition records. Additional runner access requires removing identifying details where permitted. The model-configuration values needed to interpret the reported experiments are included in `metadata/model_configuration_public.csv`.
 
 ## Data Access Boundary
 
-Raw EEG recordings are not included in this anonymous package. Access to raw recordings is subject to informed consent and institutional permissions. Data access would use either a de-identified release or a controlled-access route within the consent scope and institutional permissions.
+Raw EEG recordings are not included in this public package. Access to raw recordings is subject to informed consent and institutional permissions. Data access would use either a de-identified release or a controlled-access route within the consent scope and institutional permissions.
 
 Expected access classes are:
 
 - Public without raw EEG: generated tables, anonymized split/seed metadata, manuscript figures, model-configuration summaries, validation code, and anonymized prediction/sample summaries.
-- Available after acceptance when permitted: de-identified raw or minimally processed EEG needed to rerun preprocessing and training, distributed through a public release or controlled-access route subject to consent scope, institutional review, and any required data-use agreement.
+- Controlled access when permitted: de-identified raw or minimally processed EEG needed to rerun preprocessing and training, distributed through a public release or controlled-access route subject to consent scope, institutional review, and any required data-use agreement.
 - Not released by this package: consent forms, ethics-board records, participant-identifying records, acquisition notes, and machine-specific records.
 
 If raw EEG access cannot be granted, the derived result tables, fixed-split sample/prediction summaries, stabilized DeepConvNet paired predictions, DeepConvNet paired-run tables, per-class decodability profiles, fold/session block summaries, and validation code can still support checking the reported aggregate values and rerunning the analysis on permitted data.
