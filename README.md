@@ -1,16 +1,8 @@
 # CoG-SAGE: Stable Color-Evoked EEG Decoding
 
-Research materials for **CoG-SAGE: Stable Color-Evoked EEG Decoding**, accepted as a **regular paper at IEEE BIBM 2026** (IEEE International Conference on Bioinformatics and Biomedicine), December 1–4, 2026, Dallas, TX, USA.
+Research materials for our paper accepted at **IEEE BIBM 2026**.
 
-**Authors:** Yi Wang<sup>*</sup>, Jiaxi Wang<sup>*</sup>, Yongyuan Lin, Tao Ma, and Jianqiang Li<sup>†</sup>
-
-**Affiliation:** School of Artificial Intelligence, Shenzhen University, Shenzhen, China
-
-<sup>*</sup>Yi Wang and Jiaxi Wang are co-first authors. †Corresponding author: Jianqiang Li ([lijq@szu.edu.cn](mailto:lijq@szu.edu.cn)).
-
-- [Conference website](https://www3.cs.stonybrook.edu/~bibm2026/)
-- [Public repository](https://github.com/RightAlen/CoG-SAGE)
-- Publication status: accepted; final proceedings citation and DOI will be added when available.
+Yi Wang, Jiaxi Wang, Yongyuan Lin, Tao Ma, and Jianqiang Li.
 
 ## Overview
 
@@ -66,7 +58,7 @@ Full preprocessing and raw-data export runners are outside this public materials
 
 ## Citation
 
-Until the proceedings metadata are available, use this provisional citation; no DOI or page range has been assigned here:
+If you find this work useful, please cite:
 
 ```bibtex
 @inproceedings{wang2026cogsage,
