@@ -6,55 +6,73 @@ Yi Wang, Jiaxi Wang, Yongyuan Lin, Tao Ma, and Jianqiang Li.
 
 ## Overview
 
-CoG-SAGE (Color-Order Guided, Session-Aware Gated EEG) studies offline, participant-specific seven-class color-evoked EEG decoding. It combines posterior-channel EEG, covariance/session features, checkpoint stabilization, and ordered color-label priors. The primary dataset contains 2,359 epochs from one participant (Sub1); a smaller 350-epoch Sub2 dataset provides an exploratory participant profile. These results do not establish population-level generalization.
+CoG-SAGE studies participant-specific, seven-class color-evoked EEG decoding. It combines posterior-channel EEG with covariance/session features, ordered color-label priors, and checkpoint stabilization.
 
-This repository provides derived tables, figure PDFs, selected plotting sources, de-identified split/seed metadata, configuration summaries, validation scripts, and a minimal training scaffold. Raw EEG and participant-identifying records are not included.
+The study uses 2,359 epochs from the primary participant (Sub1) and an exploratory 350-epoch dataset from a second participant (Sub2). Evaluation covers fixed-split, cross-validation, and held-out-session settings; the results do not establish population-level generalization.
 
-## Contents
+[Framework figure](public_artifact/figures/figure2_overall_framework.pdf) · [Results and figures](public_artifact/README.md)
 
-- `public_artifact/`: public tables, figures, split/seed metadata, split-role assignments, validation code, and access notes used by the manuscript.
-- `scripts/validate_public_artifact.py`: standalone validation script for included files, row counts, CSV schemas, fixed-split role counts, fixed-split seed-run recomputation, Sub2 paired deltas, DeepConvNet paired comparisons, stabilized fixed-split prediction checks, stimulus diagnostics, and selected manuscript values.
-- `scripts/draw_paradigm_timeline.py`: source for the paradigm timeline figure.
-- `scripts/draw_overall_framework.py`: source for the framework figure.
-- `scripts/plot_model_decision_attribution.py`: reference source for the decision/attribution figure; the seed-aligned export files needed to rerun this plot are not included in the public package.
-- `training_code/`: minimal training code for the proposed model and baseline families. It includes model definitions, a path-neutral NPZ data interface, and a no-data model-construction check; it does not include or generate EEG data.
-- `configs/reported_model_config.json`: public configuration values for the reported model.
-- `LICENSE.md`: release terms for included code and generated materials.
+## Repository Structure
 
-## Quick Validation
+| Directory | Contents |
+| --- | --- |
+| [`training_code/`](training_code/README.md) | Minimal PyTorch training scaffold and data interface |
+| [`configs/`](configs/) | Reported model configuration |
+| [`public_artifact/`](public_artifact/README.md) | Result tables, predictions, split/seed metadata, and paper figures |
+| [`scripts/`](scripts/) | Result validation and selected figure-generation scripts |
 
-From this directory:
+## Installation
+
+Clone the repository and install the dependencies for training and plotting:
+
+```bash
+git clone https://github.com/RightAlen/CoG-SAGE.git
+cd CoG-SAGE
+python -m pip install -r requirements.txt
+```
+
+The result-validation script below uses only the Python standard library and can be run without installing these dependencies.
+
+## Usage
+
+### Validate released results
 
 ```bash
 python scripts/validate_public_artifact.py --root public_artifact
 ```
 
-Expected result: the JSON report includes `"status": "PASS"`.
+This checks the released files and recomputes selected manuscript summaries from the included tables and predictions. A successful run reports `"status": "PASS"`.
 
-The validation script uses only the Python standard library. The figure scripts require the packages listed in `requirements.txt`; after installing them, run:
+### Run the training example
+
+Check model construction without EEG data:
+
+```bash
+python training_code/train_color_eeg.py check-models
+```
+
+Train on your own permitted, preprocessed data:
+
+```bash
+python training_code/train_color_eeg.py train --data path/to/permitted_data.npz --model cog_sage --out results/cog_sage.json
+```
+
+The `.npz` file must contain `eeg`, `labels`, and `sessions` arrays, with optional `split` assignments. See the [training guide](training_code/README.md) for shapes, label conventions, and available baseline models.
+
+The training scaffold illustrates the model and training workflow; it is not a complete end-to-end reproduction of all paper experiments. Reported results are checked separately using the validation command above.
+
+### Generate figures
 
 ```bash
 python scripts/draw_paradigm_timeline.py
 python scripts/draw_overall_framework.py
 ```
 
-Generated files are written to `generated_figures/`.
+Outputs are saved to `generated_figures/`. All four paper figures are available as [PDFs](public_artifact/figures/). The Fig. 3 attribution script is reference code; its required seed-aligned input exports are not included.
 
-The Fig. 3 plotting script is included as reference source. It is not part of the quick-check path because the seed-aligned export files used to generate the published figure are not included in this public package.
+## Data Availability
 
-The minimal training scaffold can be inspected without data:
-
-```bash
-python training_code/train_color_eeg.py check-models
-```
-
-Training requires a permitted de-identified `.npz` file matching the interface in `training_code/README.md`.
-
-## Scope
-
-This release supports inspection of the reported aggregate values, paired comparison tables, figure PDFs, selected plotting sources, and minimal training-code structure. It does not include raw EEG recordings, generated EEG surrogates, consent documents, ethics records, participant-identifying records, or non-release development records.
-
-Full preprocessing and raw-data export runners are outside this public materials package because they depend on non-public raw-data paths and acquisition records. Additional runner or raw-data access requires de-identification, consent scope, and institutional permission.
+De-identified result tables, predictions, and split/seed metadata are included in [`public_artifact/`](public_artifact/). Raw EEG and the full preprocessing pipeline are not included. Raw-data access is subject to consent scope and institutional policy; see [Code and Data Access](public_artifact/CODE_AND_DATA_ACCESS.md).
 
 ## Citation
 
@@ -70,10 +88,6 @@ If you find this work useful, please cite:
 }
 ```
 
-## Acknowledgments
+## License
 
-This research was supported by Stable Support Project of Shenzhen (Grant No. 20220809154139001) and Internal Fund of National Engineering Laboratory for Big Data System Computing Technology (Grant No. SZU-BDSC-IF2024-09).
-
-## Data access and reproducibility
-
-The released tables and predictions support verification of reported summaries. The minimal training scaffold is an illustrative implementation, not a complete end-to-end reproduction of every manuscript experiment. Raw-data access is subject to consent scope and institutional policy; acceptance does not imply an unrestricted EEG-data release. See [Code and Data Access](public_artifact/CODE_AND_DATA_ACCESS.md) and [training instructions](training_code/README.md).
+See [LICENSE.md](LICENSE.md) for the terms covering the released code and materials.
